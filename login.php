@@ -20,8 +20,8 @@
                 session_start();
                 include 'koneksi.php';
 
-                $email =  $_POST['worker_email'];
-                $password =  $_POST['worker_password'];
+                $email =  mysqli_real_escape_string($conn, $_POST['worker_email'] );
+                $password =  mysqli_real_escape_string($conn, $_POST['worker_password'] );
 
                 $cek = mysqli_query($conn, "SELECT * FROM workers WHERE worker_email = '$email' AND worker_password = '$password'");
                 $cekuser = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email' AND password = '$password'");
