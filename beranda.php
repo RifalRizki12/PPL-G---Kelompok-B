@@ -21,6 +21,7 @@
             <h1><a href="beranda.php">AI.Jobs</a></h1>
             <ul>
                 <li><a href="beranda.php">Beranda</a></li>
+                <li><a href="usaha.php">Usaha</a></li>
                 <li><a href="profil.php">Profil</a></li>
                 <li><a href="upload.php">Upload</a></li>
                 <li><a href="logout.php">Logout</a></li>
