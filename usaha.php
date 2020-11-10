@@ -24,7 +24,7 @@
                 <li><a href="beranda.php">Beranda</a></li>
                 <li><a href="usaha.php">Usaha</a></li>
                 <li><a href="profil.php">Profil</a></li>
-                <li><a href="upload.php">Upload</a></li>
+                <li><a href="lowongan.php">Lowongan</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
