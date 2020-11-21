@@ -22,7 +22,7 @@
         <div class="container">
             <h1><a href="beranda.php">AI.Jobs</a></h1>
             <ul>
-                <li><a href="beranda.php">Beranda</a></li>
+                <li><a href="beranda_pemilik.php">Beranda</a></li>
                 <li><a href="profil.php">Profil</a></li>
                 <li><a href="lowongan.php">Lowongan</a></li>
                 <li><a href="logout.php">Logout</a></li>

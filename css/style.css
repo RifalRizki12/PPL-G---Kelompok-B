@@ -4,11 +4,66 @@
     font-family: 'Quicksand', sans-serif;
 }
 body {
-    background-color: #E0FFFF;
+    background: url("../img/bag.jpg") no-repeat;
+	background-size: 100%;
 }
+.bgcolor{
+	position: absolute;
+	background: rgba(0, 0, 0, 0.2);
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+body:before{
+	content: '';	
+	background: url("../img/bag.jpg") no-repeat;
+    background-size: cover;
+    position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	filter: blur(3px);
+}
+
 a {
     color: inherit;
     text-decoration: none;
+}
+.popup{
+	display: none;
+	position: absolute;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.close {
+    position: absolute;
+    right: 30px;
+    top: 0px;
+    color: white;
+    font-size: 45px;
+    font-weight: 50;
+    z-index: 999;
+
+}
+
+.close:hover,.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.bgbox{
+	display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 #bg-login {
     display: flex;
@@ -21,11 +76,13 @@ a {
     width: 400px;
     min-height: 300px;
     border: 1px solid #008080;
-    background-color: #AFEEEE;
+    border-radius: 10px;
+    background-color: rgba(57, 192, 170, 0.7);
     padding: 30px;
     box-sizing: border-box;
 }
 .box-login h2 {
+    color: white;
     text-align: center;
     margin-bottom: 15px;
 }
@@ -42,8 +99,9 @@ a {
     border: none;
     cursor: pointer;
 }
+
 header {
-    background-color: #008B8B;
+    background-color: rgba(43, 69, 78, 0.2);
     color: #fff;
 }
 header h1 {
@@ -55,10 +113,29 @@ header ul {
 }
 header ul li {
     display: inline-block;
+    cursor: pointer;
 }
 header ul li a {
-    padding: 20px 0px 20px 15px;
+    padding: 20px 15px 20px 15px;
     display: inline-block;
+    font-size: 20px;
+}
+header ul li button{
+    margin: 15px;
+	width: 100px;
+	height: 35px;
+	color: white;
+	border: none;
+	font-size: 20px;
+	outline: none;
+    display: inline-block;
+	background: #02B79E;
+	border-radius: 10px;
+	cursor: pointer;
+}
+header ul li:hover {
+    border-radius: 10px;
+    box-shadow: 0 0 20px #999;
 }
 footer {
     padding: 25px 0;
@@ -72,15 +149,46 @@ footer {
     display: block;
     clear: both;
 }
+.tulis{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+	color: white;
+    font-size: 45px;
+}
+.tulis a{
+    padding: 10px;
+	width: auto;
+	color: white;
+	border: none;
+	outline: none;
+    display: inline-block;
+	background: #02B79E;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.tulis a:hover {
+    border-radius: 10px;
+    box-shadow: 0 0 20px #999;
+}
+.tulis img{
+	opacity: 1;
+}
 .section {
     padding: 25px 0;
 }
 .box {
     background-color: #fff;
-    border: 1px solid #AFEEEE;
     padding: 15px;
     box-sizing: border-box;
     margin: 10px 0 25px 0;
+}
+.box:after {
+    content: '';
+    display: block;
+    clear: both;
+
 }
 .table {
     width: 100%;
@@ -92,4 +200,60 @@ footer {
 }
 .table tr td {
     padding: 5px 10px;
+}
+.search {
+    padding: 15px;
+    background-color: rgb(150, 215, 218);
+
+}
+.search input[type=text] {
+    width: 60%;
+    padding: 10px;
+    border: none;
+}
+.search input[type=submit] {
+    padding: 12px 15px;
+    background-color: #4eb6b6;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.col-5 {
+    width: 20%;
+    height: 100px;
+    text-align: center;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.col-4 {
+    width: 25%;
+    height: 400px;
+    border: 1px solid #75afaf;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.col-4:hover {
+    box-shadow: 0 0 20px #999;
+}
+.col-4 img {
+    width: 100%;
+    height: 80%;
+    margin: auto;
+}
+.col-4 .nama {
+    color: #34a4ff;
+    margin-bottom: 5px;
+}
+.col-4 .harga {
+    font-weight: bold;
+    color: #4d4d4d;
+    float: right;
+}
+footer {
+    padding: 25px 0;
+    background-color: rgba(43, 69, 78, 0.2);
+    color: #fff;
 }

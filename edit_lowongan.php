@@ -6,6 +6,9 @@
     }
 
     $lowongan = mysqli_query($conn, "SELECT * FROM jobs WHERE job_id = '".$_GET['id']."' ");
+    if(mysqli_num_rows($lowongan) == 0){
+        echo '<script>window.location="lowongan.php"</script>';
+    }
     $p = mysqli_fetch_object($lowongan);
 
 ?>
@@ -15,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Lowongan</title>
+    <title>AI.Jobs || Edit Lowongan</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
@@ -26,7 +29,7 @@
         <div class="container">
             <h1><a href="beranda.php">AI.Jobs</a></h1>
             <ul>
-                <li><a href="beranda.php">Beranda</a></li>
+                <li><a href="beranda_pemilik.php">Beranda</a></li>
                 <li><a href="profil.php">Profil</a></li>
                 <li><a href="lowongan.php">Lowongan</a></li>
                 <li><a href="logout.php">Logout</a></li>

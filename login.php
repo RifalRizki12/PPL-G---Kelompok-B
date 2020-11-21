@@ -30,7 +30,7 @@
                     $_SESSION['status_login'] = true;
                     $_SESSION['worker_global'] = $d;
                     $_SESSION['id'] = $d -> worker_id;
-                    echo '<script>window.location="beranda.php"</script>';
+                    echo '<script>window.location="beranda_pemilik.php"</script>';
                 }else if(mysqli_num_rows($cekuser) > 0) {
                     $d = mysqli_fetch_object($cekuser);
                     $_SESSION['status_login_user'] = true;
