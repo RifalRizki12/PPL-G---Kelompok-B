@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Homepage</title>
+	<link rel="stylesheet" type="text/css" href="CSS/style hpg.css">
+</head>
+<body>
+	<img class="belajar" src="Background/job.png">
+	<div class="top"></div>
+	<div class="bgcolor"></div>
+	<header>
+		<div class="navbar">
+			<ul>
+				<li class="nav3">
+					<button onclick="document.getElementById('login').style.display='block'">Masuk</button>
+				</li>
+				<li class="nav4">
+					<button onclick="document.getElementById('register').style.display='block'">Daftar</button>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<p class="tulis"><b>Jadilah</b> Seorang Yang<br><b>Berprestasi</b>, <b>Gabung</b><br>Bersama <b>Kami</b></p>
+	<button onclick="document.getElementById('register').style.display='block'" class="bergabung"><font class="f1">Bergabung</font></button>
+
+<!-- login -->
+
+	<div id="login" class="popup">
+		<div id="klik" class="bgbox">
+			<div class="img">
+				<span onclick="document.getElementById('login').style.display='none'" class="close" title="Close PopUp">&times;</span>
+			</div>
+			<div class="box">			
+				<div class="head">
+					<button class="tab">Login</button>
+				</div>
+				<div id="signIn" class="tabContent">
+					<div class="ibox">
+						<span class="title1"><b>My Account</b></span>
+						<form autocomplete="off" action="#">
+							<div class="up">
+							</div>
+							<div class="down">
+								<input type="text" name="Username" placeholder="Username/Email Address" required>
+								<input type="Password" name="Password" placeholder="Password" required>
+								<h1><a href="#">Forget Password?</a></h1>
+								<div class="garisbawah"></div>
+								<p class="Terms">By clicking Sign In, you agree to our <font color="#0185E9" style="cursor: pointer;">Terms of Use</font> and our <font color="#0185E9" style="cursor: pointer;">Privacy Policy</font></p>
+								<input type="submit" name="Sign In" value="Sign In">
+							</div>
+						</form>
+					</div>						
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- register -->
+
+	<div id="register" class="popup">
+		<div id="klik" class="bgbox">
+			<div class="img">
+				<span onclick="document.getElementById('register').style.display='none'" class="close" title="Close PopUp">&times;</span>
+			</div>
+			<div class="box">			
+				<div class="head">
+					<button class="tab">Register</button>
+				</div>
+				<div id="signIn" class="tabContent">
+					<div class="ibox">
+						<span class="title1"><b>Create Acount</b></span>
+						<form autocomplete="off" action="#">
+							<div class="regdown">
+								<div class="top1">
+									<input type="text" name="First Name" placeholder="First Name" required>
+									<input type="text" name="Last Name" placeholder="Last Name" required>
+								</div>
+								<div class="top2">
+									<select name="" id="" required>
+										<option value="+1">+1</option>
+										<option value="+91">+91</option>
+										<option value="+62">+62</option>
+										<option value="+98">+98</option>
+									</select>
+									<input type="number" name="Phone Number" placeholder="Enter Phone Number" required>
+									<input type="text" name="Username" placeholder="Username" required>
+								</div>
+								<div class="top3">
+									<input type="text" name="Email" placeholder="Enter Your Email" required>
+								</div>
+								<div class="top4">
+									<input type="Password" name="Password" placeholder="Password" required>
+									<input type="Password" name="Confirm Password" placeholder="Confirm Password" required>
+								</div>
+								<p class="Terms">By clicking Sign Up, you agree to our <font color="#0185E9" style="cursor: pointer;">Terms of Use</font> and our <font color="#0185E9" style="cursor: pointer;">Privacy Policy</font></p>
+								<input type="submit" name="Sign Up" value="Daftar Sebagai pekerja">
+								<input type="submit" name="Sign Up2" value="Daftar Sebagai Pemilik Usaha">
+							</div>
+						</form>
+					</div>						
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

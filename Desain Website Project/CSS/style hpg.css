@@ -1,0 +1,542 @@
+
+body{
+	background: url("../Background/books.jpg") no-repeat;
+	background-size: 100%;
+	position: fixed;
+	top: -10px;
+	left: -10px;
+	width: 1366px;
+	height: 768px;
+/*	backdrop-filter: blur(6px);*/
+/*	-webkit-backdrop-filter: blur(6px);*/
+	font-family: Segoe UI;
+	color: white;
+}
+
+body:before{
+	content: '';	
+	background: url("../Background/books.jpg") no-repeat;
+	background-size: cover;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	filter: blur(6px);
+}
+
+.bgcolor{
+	position: absolute;
+	background: rgba(0,0,0,.2);
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.belajar{
+	position: absolute;
+	margin-left: 150px;
+	top: 215px;
+	left: 123px;
+	width: 300px;
+	height: 280px;
+	opacity: 1;
+}
+
+.navbar{
+	position: absolute;
+	width: 100%;
+	top: 15px;
+	height: 63px;
+	background: rgba(0,0,0,0);
+}
+
+.garis{
+	position: absolute;
+	top: 30px;
+	left: 61.5px;
+	width: 50px;
+	border: 2px solid #FF0000;
+	border-radius: 50px;
+	opacity: 1;
+}
+
+.navbar ul{
+	font-size: 20px;
+	top: -5px;
+	left: 600px;
+	position: absolute;
+	display: flex;
+    list-style-type: none;
+}
+
+.navbar li a{
+	text-decoration: none;
+	margin-left: 13px;
+	color: white;
+	font-weight: 100;
+}
+
+.nav1 a{
+	padding-right: 13px;
+	border-right: 1px solid rgba(255,255,255,1);
+}
+
+.nav2 a{
+	padding-right: 40px;
+	margin-right: 20px;
+	border-right: 1px solid rgba(255,255,255,1);
+}
+
+.nav3 button{
+	margin-left: 450px;
+	margin-right: 20px;
+	width: 80px;
+	height: 35px;
+	color: white;
+	border: none;
+	font-size: 18px;
+	outline: none;
+	padding: 5px;
+	background:#02B79E;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+.nav4{
+	margin-top: 0px;
+}
+.nav4 button{
+	width: 80px;
+	height: 35px;
+	color: white;
+	border: none;
+	font-size: 18px;
+	outline: none;
+	padding: 5px;
+	background:#02B79E;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+.logo{
+	position: relative;
+	top: -10px;
+	left: 41px;
+	width: 150px;
+}
+
+.top{
+	position: absolute;
+	background: rgba(39, 164, 227, 1) 0% 0% no-repeat padding-box;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	height: 6px;
+}
+
+.bergabung{
+	position: absolute;
+	outline: none;
+	cursor: pointer;
+	top: 490px;
+	left: 642px;
+	width: 130px;
+	height: 50px;
+	background: transparent;
+	box-shadow: -3px 5px 17px #000000;
+	border: 2px solid #02B79E;
+	border-radius: 10px;
+}
+
+.f1{
+	font-size: 18px;
+	text-align: left;
+	letter-spacing: 0;
+	color: #02B79E;
+	text-shadow: -3px 5px 10px #00000099;
+}
+
+.tulis{
+	position: absolute;
+	color: white;
+	top: 180px;
+	left: 640px;
+	font-size: 45px;
+}
+
+.tombollogin{
+	position: relative;
+	background-color: #E2E2E2;
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.popup{
+	display: none;
+	position: absolute;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+/*Login*/
+
+.close {
+    position: absolute;
+    right: 445px;
+    top: 85px;
+    color: white;
+    font-size: 45px;
+    font-weight: 50;
+    z-index: 999;
+
+}
+
+.close:hover,.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.bgbox{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.title1 b{
+	position: relative;
+	top: -130px;
+	font-size: 35px;
+	color: white;
+}
+
+.box{
+	top: 100px;
+	width: 450px;
+	height: 450px;
+	background-color: #02B79E;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+	position: relative;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+}
+
+.ibox{
+	top: 150px;
+	left: 0px;
+	width: 450px;
+	height: 300px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background-color: rgba(226, 226, 226, 1);
+	padding: 20px;
+	position: absolute;
+}
+
+.head {
+	position: relative;
+	top: 70px;
+	left: -20px;
+	width: 420px;
+	display: flex;
+	height: 60px;
+}
+
+.head button{
+	width: 25%;
+	height: 100%;
+	float: left;
+	border: none;
+	border-top-right-radius: 10px;
+	outline: none;
+	cursor: pointer;
+	padding: 10px;
+	background-color: #E2E2E2;
+	color: #02B79E;
+	font-size: 20px;
+}
+
+.or{
+	position: relative;
+	display: flex;
+    list-style-type: none;
+    top: -30px;
+    left: -20px;
+}
+
+.or .garisatas{
+	position: relative;
+	background-color: black;
+	width: 100%;
+	height: 1px;
+	cursor: none;
+}
+
+.or .bunder{
+	position: relative;
+	top: -10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 1px solid black;
+}
+
+.bunder p{
+	position: relative;
+	text-align: center;
+	color: black;
+	top: 0px;
+	left: 0px;
+	padding: 20px;
+	font-size: 10px;
+	transform: translate(-40%, -50%);
+}
+
+.down{
+	position: relative;
+	top: -30px;
+	margin-top: 30px;
+}
+.down input[type="text"],.down input[type="password"]{
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	left: 25px;
+	margin-bottom: 15px;
+	padding: 4px;
+	height: 36px;
+	width: 400px;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+	outline: none;
+	border: none;
+}
+
+.down input[type="submit"]{
+	position: relative;
+	top: -15px;
+	border: none;
+	outline: none;
+	background: #8BC2B7;
+	height: 30px;
+	width: 80px;
+	margin-top: 20px;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.25s;
+}
+
+.down h1{
+	position: relative;
+	text-align: left;
+	top: -2px;
+	left: -25px;
+	font-weight: 13;
+	font-size: 12px;
+	margin-top: 0px;
+}
+
+.down a{
+	text-decoration: none;
+	color: #0185E9;
+}
+
+h1{
+	position: absolute;
+	font-size: 12px;
+	margin-left: 50px;
+	margin-top: -60px;
+}
+
+.garisbawah{
+	position: relative;
+	transform: translate(0%);
+	left: 21px;
+	width: 410px;
+	height: 1px;
+	background: black;
+	top: 5px;
+}
+
+.down p{
+	position: relative;
+	top: 0px;
+	font-size: 12px;
+}
+
+.Terms{
+	color: black;
+}
+
+/*Register*/
+
+#register .head button{
+	font-size: 16px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.top1 input{
+	position: relative;
+	top: -45px;
+	padding-left: 6px;
+	margin-left: 5px;
+	margin-right: 5px;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	width: 200px;
+	height: 30px;
+	color: black;
+	font-size: 11px;
+	background: white;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+}
+
+.top2 input[type=text]{
+	position: relative;
+	top: -40px;
+	padding-left: 6px; 
+	outline: none;
+	border: none;
+	width: 194px;
+	height: 30px;
+	color: black;
+	font-size: 11px;
+	background: white;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+	box-decoration-break: none;
+}
+
+.top2 select, .top2 input{
+	position: relative;
+	left: -90px;
+	top: -40px;
+	outline: none;
+	border: none;
+	color: black;
+	font-size: 11px;
+	background: white;
+}
+
+.top2 select{
+	position: relative;
+	left: 7px;
+	width: 40px;
+	height: 32px;
+	background: #d2d2d2;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+}
+
+.top2 input[type=number]{
+	padding-left: 6px;
+	width: 154px;
+	height: 30px;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+}
+
+.top2 input{
+	position: relative;
+	left: -2.2px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.top3 input[type=text]{
+	position: relative;
+	top: -35px;
+	padding-left: 6px;
+	margin-left: 5px;
+	margin-right: 5px;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	width: 414px;
+	height: 30px;
+	color: black;
+	font-size: 11px;
+	background: white;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+}
+
+.top4 input{
+	position: relative;
+	top: -30px;
+	padding-left: 6px;
+	margin-left: 5px;
+	margin-right: 5px;
+	outline: none;
+	border: none;
+	width: 194px;
+	height: 30px;
+	color: black;
+	font-size: 11px;
+	background: white;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+}
+
+.regdown input[type="submit"]{
+	position: relative;
+	top: -15px;
+	border: none;
+	outline: none;
+	background: #8BC2B7;
+	height: 30px;
+	width: 200px;
+	margin-top: 20px;
+	box-shadow: 0 3px 4px rgba(0,0,0,.2);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.25s;
+}
+
+.regdown h1{
+	position: relative;
+	text-align: left;
+	top: -2px;
+	left: -25px;
+	font-weight: 13;
+	font-size: 12px;
+	margin-top: 0px;
+}
+
+.regdown a{
+	text-decoration: none;
+	color: #0185E9;
+}
+.regdown .Terms{
+	position: relative;
+	top: -30px;
+	font-size: 12px;
+}
+
+#register input[type=submit]{
+	position: relative;
+	top: -50px;
+}
+
+/*zomm animation*/
+
+#klik{
+    animation: zoom 0.6s
+}
+@keyframes zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
