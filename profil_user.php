@@ -2,7 +2,7 @@
     session_start();
     include 'koneksi.php';
     if($_SESSION['status_login_user'] != true) {
-        echo '<script>window.location="login.php"</script>';
+        echo '<script>window.location="beranda.php"</script>';
     }
 
     $query = mysqli_query($conn, "SELECT * FROM users WHERE id = '".$_SESSION['id_user']."' ");

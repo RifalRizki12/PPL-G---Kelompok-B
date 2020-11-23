@@ -64,7 +64,6 @@
 
                         $cek = mysqli_query($conn, "SELECT * FROM workers WHERE worker_email = '$email' AND worker_password = '$password'");
                         $cekuser = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email' AND password = '$password'");
-                        $cekadmin = mysqli_query($conn, "SELECT * FROM admins WHERE admin_email = '$email' AND admin_password = '$password'");
                         if(mysqli_num_rows($cek) > 0) {
                             $d = mysqli_fetch_object($cek);
                             $_SESSION['status_login'] = true;
@@ -77,12 +76,6 @@
                             $_SESSION['user_global'] = $d;
                             $_SESSION['id_user'] = $d -> id;
                             echo '<script>window.location="beranda_user.php"</script>';
-                        }else if(mysqli_num_rows($cekadmin) > 0) {
-                            $d = mysqli_fetch_object($cekadmin);
-                            $_SESSION['status_login_admin'] = true;
-                            $_SESSION['admin_global'] = $d;
-                            $_SESSION['id_admin'] = $d -> admin_id;
-                            echo '<script>window.location="beranda_admin.php"</script>';
                         } else {
                             echo '<script>alert("Email atau Password Anda Salah")</script>';
                         }

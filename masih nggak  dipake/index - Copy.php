@@ -1,9 +1,4 @@
 <?php 
-    session_start();
-    if($_SESSION['status_login_user'] != true) {
-        echo '<script>window.location="beranda.php"</script>';
-    }
-
     include "koneksi.php";
 ?>
 <!DOCTYPE html>
@@ -21,10 +16,16 @@
         <div class="container">
             <h1><a href="index.php">AI.Jobs</a></h1>
             <ul>
-                <li><a href="beranda_user.php">Beranda</a></li>
-                <li><a href="profil_user.php">Profil</a></li>
-                <li><a href="upload.php">Upload</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><div class="search">
+                    <div class="container">
+                        <form action="lowongan.php">
+                            <input type="text" name="search" placeholder="Cari Lowongan">
+                            <input type="submit" name="cari" value="Search">
+                        </form>
+                    </div>
+                </div></li>
+                <li><a href="lowongan.php">Lowongan</a></li>
+
             </ul>
         </div>
     </header>
@@ -32,9 +33,9 @@
     <!-- search -->
     <div class="search">
         <div class="container">
-            <form action="detail_lowongan.php">
+            <form action="lowongan.php">
                 <input type="text" name="search" placeholder="Cari Lowongan">
-                <input type="submit" name="cari" value="Cari Lowongan">
+                <input type="submit" name="cari" value="Search">
             </form>
         </div>
     </div>
@@ -49,7 +50,7 @@
                     if(mysqli_num_rows($kategori) > 0) {
                         while($k = mysqli_fetch_array($kategori)){
                 ?>
-                    <a href="detail_lowongan.php?kat=<?php echo $k['category_id'] ?>">
+                    <a href="lowongan.php?kat=<?php echo $k['category_id'] ?>">
                         <div class="col-5">
                             <img src="img/category.png" width="50px" style="margin-bottom: 5px;">
                             <p><?php echo $k['category_name'] ?></p>
@@ -68,7 +69,7 @@
             <h3>Lowongan Baru</h3>
             <div class="box">
                 <?php
-                    $lowongan = mysqli_query($conn, "SELECT * FROM jobs WHERE job_status = 1 ORDER BY job_id DESC LIMIT 8");
+                    $lowongan = mysqli_query($conn, "SELECT * FROM jobs ORDER BY job_id DESC LIMIT 8");
                     if(mysqli_num_rows($lowongan) > 0){
                         while($p = mysqli_fetch_array($lowongan)){
                 ?>
@@ -87,10 +88,10 @@
     </div>
     
     <!-- footer -->
-    <footer>
+    <div class="footer">
         <div class="container">
             <small>Copyright &copy; 2020 - AI.Jobs</small>
         </div>
-    </footer>
+    </div>
 </body>
 </html>

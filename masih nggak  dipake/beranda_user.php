@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if($_SESSION['status_login'] != true) {
+    if($_SESSION['status_login_user'] != true) {
         echo '<script>window.location="beranda.php"</script>';
     }
 ?>
@@ -15,15 +15,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bgcolor"></div>
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="beranda.php">AI.Jobs</a></h1>
+            <h1><a href="beranda_user.php">AI.Jobs</a></h1>
             <ul>
-                <li><a href="beranda_pemilik.php">Beranda</a></li>
-                <li><a href="profil.php">Profil</a></li>
-                <li><a href="lowongan.php">Lowongan</a></li>
+                <li><a href="beranda_user.php">Beranda</a></li>
+                <li><a href="profil_user.php">Profil</a></li>
+                <li><a href="upload.php">Upload</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
@@ -31,13 +30,9 @@
     <!-- content -->
     <div class="section">
         <div class="container">
-            <div class="tulis">
-                <table>
-                <tr>
-                <td><img src="img/job.png" width="400px"></td>
-                <td><h4>Welcome <?php echo $_SESSION['worker_global']->worker_name ?> to AI.Jobs<br><a href="lowongan.php">Buat Lowongan Baru</a></h4></td>
-                </tr>
-                </table>
+            <h3>Beranda User</h3>
+            <div class="box">
+                <h4>Welcome <?php echo $_SESSION['user_global']->name ?> to AI.Jobs</h4>
             </div>
         </div>
     </div>
@@ -48,6 +43,5 @@
             <small>Copyright &copy; 2020 - AI.Jobs</small>
         </div>
     </footer>
-    
 </body>
 </html>

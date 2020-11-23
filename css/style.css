@@ -101,7 +101,7 @@ a {
 }
 
 header {
-    background-color: rgba(43, 69, 78, 0.2);
+    background-color: rgba(85, 197, 235, 0.2);
     color: #fff;
 }
 header h1 {
@@ -144,6 +144,9 @@ footer {
     width: 90%;
     margin: 0 auto;
 }
+.container h3{
+    color: #fff;
+}
 .container:after {
     content: '';
     display: block;
@@ -176,10 +179,11 @@ footer {
 	opacity: 1;
 }
 .section {
+    
     padding: 25px 0;
 }
 .box {
-    background-color: #fff;
+    background-color: rgba(47, 65, 71, 0.7);
     padding: 15px;
     box-sizing: border-box;
     margin: 10px 0 25px 0;
@@ -192,7 +196,7 @@ footer {
 }
 .table {
     width: 100%;
-    border-color: #2e7777;
+    border-color: #76ffff;
     border-collapse: collapse;
 }
 .table tr {
@@ -203,7 +207,7 @@ footer {
 }
 .search {
     padding: 15px;
-    background-color: rgb(150, 215, 218);
+    background-color: rgba(93, 163, 187, 0.2);
 
 }
 .search input[type=text] {
@@ -219,6 +223,7 @@ footer {
     cursor: pointer;
 }
 .col-5 {
+    color: #fff;
     width: 20%;
     height: 100px;
     text-align: center;
@@ -226,10 +231,12 @@ footer {
     padding: 10px;
     box-sizing: border-box;
 }
+.col-5:hover {
+    box-shadow: 0 0 20px #999;
+}
 .col-4 {
     width: 25%;
     height: 400px;
-    border: 1px solid #75afaf;
     float: left;
     padding: 10px;
     box-sizing: border-box;
@@ -244,12 +251,12 @@ footer {
     margin: auto;
 }
 .col-4 .nama {
-    color: #34a4ff;
+    color: #ffffff;
     margin-bottom: 5px;
 }
 .col-4 .harga {
     font-weight: bold;
-    color: #4d4d4d;
+    color: #ffffff;
     float: right;
 }
 footer {

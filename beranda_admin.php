@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if($_SESSION['status_login_user'] != true) {
+    if($_SESSION['status_login_admin'] != true) {
         echo '<script>window.location="beranda.php"</script>';
     }
 
@@ -19,11 +19,10 @@
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="index.php">AI.Jobs</a></h1>
+            <h1><a href="beranda_admin.php">AI.Jobs</a></h1>
             <ul>
-                <li><a href="beranda_user.php">Beranda</a></li>
-                <li><a href="profil_user.php">Profil</a></li>
-                <li><a href="upload.php">Upload</a></li>
+                <li><a href="beranda_admin.php">Beranda</a></li>
+                <li><a href="kategori.php">kategori</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>

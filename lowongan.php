@@ -2,7 +2,7 @@
     session_start();
     include 'koneksi.php';
     if($_SESSION['status_login'] != true) {
-        echo '<script>window.location="login.php"</script>';
+        echo '<script>window.location="beranda.php"</script>';
     }
 
 ?>
@@ -34,8 +34,8 @@
         <div class="container">
             <h3>Lowongan</h3>
             <div class="box">
-                <table border="1" cellspacing="0" class="table">
-                    <thead>
+                <table border="1" cellspacing="0" class="table" style="color: #fff;">
+                    <thead style="background-color: rgba(93, 163, 187, 0.7)">
                         <tr>
                             <th>No</th>
                             <th>Kategori</th>
@@ -51,7 +51,7 @@
                     <tbody>
                         <?php
                             $no = 1;
-                            $lowongan = mysqli_query($conn, "SELECT * FROM jobs LEFT JOIN category USING (category_id) ORDER BY job_id DESC");
+                            $lowongan = mysqli_query($conn, "SELECT * FROM jobs LEFT JOIN category USING (category_id) WHERE worker_id = '".$_SESSION['id']."' ORDER BY job_id DESC");
                             if(mysqli_num_rows($lowongan) > 0) {
                             while($row = mysqli_fetch_array($lowongan)) {
                         ?>

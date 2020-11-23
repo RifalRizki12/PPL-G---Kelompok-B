@@ -2,7 +2,7 @@
     session_start();
     include 'koneksi.php';
     if($_SESSION['status_login'] != true) {
-        echo '<script>window.location="login.php"</script>';
+        echo '<script>window.location="beranda.php"</script>';
     }
 
 ?>
@@ -95,6 +95,7 @@
                                                             '".$req."',
                                                             '".$gaji."',
                                                             '".$status."',
+                                                            '".$_SESSION['id']."',
                                                             null
                                                             ) ");
                             if($insert) {

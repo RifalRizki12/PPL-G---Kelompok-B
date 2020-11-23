@@ -1,8 +1,8 @@
 <?php 
     session_start();
     include 'koneksi.php';
-    if($_SESSION['status_login'] != true) {
-        echo '<script>window.location="login.php"</script>';
+    if($_SESSION['status_login_admin'] != true) {
+        echo '<script>window.location="beranda.php"</script>';
     }
 
     $kategori = mysqli_query($conn, "SELECT * FROM category WHERE category_id = '".$_GET['id'] ."' ");
@@ -26,11 +26,10 @@
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="beranda.php">AI.Jobs</a></h1>
+            <h1><a href="beranda_admin.php">AI.Jobs</a></h1>
             <ul>
-                <li><a href="beranda.php">Beranda</a></li>
-                <li><a href="profil.php">Profil</a></li>
-                <li><a href="lowongan.php">Lowongan</a></li>
+                <li><a href="beranda_admin.php">Beranda</a></li>
+                <li><a href="kategori.php">Kategori</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
