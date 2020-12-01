@@ -99,6 +99,15 @@ a {
     border: none;
     cursor: pointer;
 }
+.btn2 {
+    width: 100px;
+    padding: 8px 15px;
+    background-color: #008B8B;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    
+}
 
 header {
     background-color: rgba(85, 197, 235, 0.2);
@@ -120,11 +129,11 @@ header ul li a {
     display: inline-block;
     font-size: 20px;
 }
-header ul li button{
+.btn2{
     margin: 15px;
-	width: 100px;
-	height: 35px;
-	color: white;
+	width: auto;
+    height: auto;
+    color: #fff;
 	border: none;
 	font-size: 20px;
 	outline: none;
@@ -133,10 +142,15 @@ header ul li button{
 	border-radius: 10px;
 	cursor: pointer;
 }
+.btn2:hover{
+    border-radius: 10px;
+    box-shadow: 0 0 20px #999;
+}
 header ul li:hover {
     border-radius: 10px;
     box-shadow: 0 0 20px #999;
 }
+
 footer {
     padding: 25px 0;
 }
@@ -161,6 +175,7 @@ footer {
     font-size: 45px;
 }
 .tulis a{
+    margin: 20px;
     padding: 10px;
 	width: auto;
 	color: white;
@@ -183,7 +198,7 @@ footer {
     padding: 25px 0;
 }
 .box {
-    background-color: rgba(47, 65, 71, 0.7);
+    background-color: rgba(47, 65, 71, 0.9);
     padding: 15px;
     box-sizing: border-box;
     margin: 10px 0 25px 0;
@@ -256,8 +271,32 @@ footer {
 }
 .col-4 .harga {
     font-weight: bold;
-    color: #ffffff;
+    color: #ff0000;
     float: right;
+}
+.col-2 {
+    width: 50%;
+    min-height: 200px;
+
+    padding: 10px;
+    box-sizing: border-box;
+    float: left;
+}
+.col-2 img{
+    border: 1px #f9f9f9;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.col-2 h3{
+    margin-bottom: 10px;
+}
+.col-2 h4{
+    color: #ff0000;
+}
+.col-2 p {
+    margin: 15px 0;
+    text-align: justify;
+    line-height: 25px;
 }
 footer {
     padding: 25px 0;

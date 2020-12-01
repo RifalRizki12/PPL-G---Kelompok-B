@@ -3,13 +3,29 @@
 
     if(isset($_GET['idk'])) {
         $delete = mysqli_query($conn, "DELETE FROM category WHERE category_id = '".$_GET['idk']."' ");
-
-        mysqli_query($conn,"SELECT * FROM category ORDER BY category_id");
-        mysqli_query($conn,"ALTER TABLE category ORDER BY category_id");
-        mysqli_query($conn,"SET @count:=0");
-        mysqli_query($conn,"UPDATE category SET category_id=@count:=@count+1");
-        mysqli_query($conn,"ALTER TABLE category AUTO_INCREMENT=1");
         echo '<script>window.location="kategori.php"</script>';
+    }
+
+    if(isset($_GET['idpk'])) {
+        $picture = mysqli_query($conn, "SELECT picture FROM users WHERE id = '".$_GET['idpk']."' ");
+        $p = mysqli_fetch_object($picture);
+
+        $resume = mysqli_query($conn, "SELECT resume FROM users WHERE id = '".$_GET['idpk']."' ");
+        $r = mysqli_fetch_object($resume);
+
+        unlink('./user_img/'.$p->picture);
+        unlink('./user_img/'.$r->resume);
+        $delete = mysqli_query($conn, "DELETE FROM users WHERE id = '".$_GET['idpk']."' ");
+        echo '<script>window.location="verifikasi_user.php"</script>';
+    }
+
+    if(isset($_GET['idpu'])) {
+        $picture = mysqli_query($conn, "SELECT owner_resume FROM owners WHERE owner_id = '".$_GET['idpu']."' ");
+        $p = mysqli_fetch_object($picture);
+
+        unlink('./user_img/'.$p->picture);
+        $delete = mysqli_query($conn, "DELETE FROM users WHERE id = '".$_GET['idpk']."' ");
+        echo '<script>window.location="verifikasi_pemilik.php"</script>';
     }
 
     if(isset($_GET['idp'])) {
@@ -19,12 +35,6 @@
         unlink('./job_img/'.$p->job_image);
 
         $delete = mysqli_query($conn, "DELETE FROM jobs WHERE job_id = '".$_GET['idp']."' ");
-
-        mysqli_query($conn,"SELECT * FROM jobs ORDER BY job_id");
-        mysqli_query($conn,"ALTER TABLE jobs ORDER BY job_id");
-        mysqli_query($conn,"SET @count:=0");
-        mysqli_query($conn,"UPDATE jobs SET job_id=@count:=@count+1");
-        mysqli_query($conn,"ALTER TABLE jobs AUTO_INCREMENT=1");
         echo '<script>window.location="lowongan.php"</script>';
     }
 

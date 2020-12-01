@@ -1,11 +1,14 @@
 <?php 
     session_start();
     include 'koneksi.php';
-    if($_SESSION['status_login'] != true) {
+    if($_SESSION['status_login_admin'] != true) {
         echo '<script>window.location="beranda.php"</script>';
     }
 
-    $query = mysqli_query($conn, "SELECT * FROM owners WHERE owner_id = '".$_SESSION['id']."' ");
+    $query = mysqli_query($conn, "SELECT * FROM users WHERE id = '".$_GET['idpk']."' ");
+    if(mysqli_num_rows($query) == 0){
+        echo '<script>window.location="daftar_user.php"</script>';
+    }
     $d = mysqli_fetch_object($query);
 ?>
 
@@ -14,7 +17,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI.Jobs || Profil Pemilik Usaha</title>
+    <title>AI.Jobs || Edit Profil Pencari Kerja</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
@@ -22,11 +25,11 @@
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="beranda.php">AI.Jobs || PEMILIK USAHA</a></h1>
+            <h1><a href="beranda_admin.php">AI.Jobs || ADMIN</a></h1>
             <ul>
-                <li><a href="beranda_pemilik.php">Beranda</a></li>
-                <li><a href="profil.php">Profil</a></li>
-                <li><a href="lowongan.php">Lowongan</a></li>
+                <li><a href="beranda_admin.php">Beranda</a></li>
+                <li><a href="verifikasi.php">Verifikasi</a></li>
+                <li><a href="kategori.php">kategori</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
@@ -37,26 +40,29 @@
             <h3>Profil</h3>
             <div class="box">
                 <form action="" method="POST">
-                    <input type="text" name="nama" placeholder="Nama Lengkap" class="input-control" value="<?php echo $d -> owner_name ?>" required>
-                    <input type="text" name="category" placeholder="Category" class="input-control" value="<?php echo $d -> owner_category ?>" required>
-                    <input type="text" name="email" placeholder="E-mail" class="input-control" value="<?php echo $d -> owner_email ?>" required>
+                    <input type="text" name="nama" placeholder="Nama Lengkap" class="input-control" value="<?php echo $d -> name ?>" required>
+                    <input type="text" name="phone" placeholder="Phone" class="input-control" value="<?php echo $d -> phone ?>" required>
+                    <input type="text" name="category" placeholder="Category" class="input-control" value="<?php echo $d -> category ?>" required>
+                    <input type="text" name="email" placeholder="E-mail" class="input-control" value="<?php echo $d -> email ?>" required>
                     <input type="submit" name="submit" value="Ubah Profil" class="btn">
                 </form>
                 <?php
                     if(isset($_POST['submit'])) {
-                        $nama = ucwords($_POST['nama']);
-                        $category = ucwords($_POST['category']);
-                        $email = $_POST['email'];
+                        $nama_user = ucwords($_POST['nama']);
+                        $phone_user = $_POST['phone'];
+                        $category_user = ucwords($_POST['category']);
+                        $email_user = $_POST['email'];
 
-                        $update = mysqli_query($conn, "UPDATE owners SET 
-                                                owner_name = '".$nama."',
-                                                owner_category = '".$category."',
-                                                owner_email = '".$email."'
-                                                WHERE owner_id = '".$d -> owner_id."'
+                        $update = mysqli_query($conn, "UPDATE users SET 
+                                                name = '".$nama_user."',
+                                                phone = '".$phone_user."',
+                                                category = '".$category_user."',
+                                                email = '".$email_user."'
+                                                WHERE id = '".$d -> id."'
                                                 ");
                         if($update) {
                             echo '<script>alert("Profil berhasil di ubah")</script>' ;
-                            echo '<script>window.location = "profil.php"</script>' ;
+                            echo '<script>window.location = "daftar_user.php"</script>' ;
                         }else {
                             echo 'gagal'.mysqli_error($conn);
                         }
@@ -79,13 +85,13 @@
                         if ($pass2 != $pass1) {
                             echo '<script>alert("Konfirmasi Password Salah")</script>';
                         } else{
-                            $update_password = mysqli_query($conn, "UPDATE owners SET
-                                                owner_password = '".$pass1."'
-                                                WHERE owner_id = '".$d -> owner_id."'
+                            $update_password = mysqli_query($conn, "UPDATE users SET
+                                                password = '".$pass1."'
+                                                WHERE id = '".$d -> id."'
                                                 ");
                             if($update_password) {
                                 echo '<script>alert("Password berhasil di ubah")</script>' ;
-                                echo '<script>window.location = "profil.php"</script>' ;
+                                echo '<script>window.location = "daftar_user.php"</script>' ;
                             }else {
                                 echo 'gagal'.mysqli_error($conn);
                             }

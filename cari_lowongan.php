@@ -1,25 +1,18 @@
 <?php 
     error_reporting(0);
-    include "koneksi.php";
     session_start();
     if($_SESSION['status_login_user'] != true) {
         echo '<script>window.location="beranda.php"</script>';
     }
 
-    $dlowongan = mysqli_query($conn, "SELECT * FROM jobs WHERE job_id = '".$_GET['id']."'");
-    $p = mysqli_fetch_object($dlowongan);
-
-    $query = mysqli_query($conn, "SELECT * FROM users WHERE id = '".$_SESSION['id_user']."' ");
-    $d = mysqli_fetch_object($query);
-
-
+    include "koneksi.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI.Jobs || Detail Lowongan</title>
+    <title>AI.Jobs || Cari Lowongan</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
@@ -31,7 +24,7 @@
             <ul>
                 <li><a href="beranda_user.php">Beranda</a></li>
                 <li><a href="profil_user.php">Profil</a></li>
-                <li><a href="lamaran_user.php">Lamaran</a></li>
+                <li><a href="upload.php">Upload</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
@@ -40,7 +33,7 @@
     <!-- search -->
     <div class="search">
         <div class="container">
-            <form action="detail_lowongan.php">
+            <form action="cari_lowongan.php">
                 <input type="text" name="search" placeholder="Cari Lowongan" value="<?php echo $_GET['search'] ?>">
                 <input type="hidden" name="kat" value="<?php echo $_GET['kat'] ?>">
                 <input type="submit" name="cari" value="Cari Lowongan">
@@ -48,22 +41,29 @@
         </div>
     </div>
 
-    <!-- detail lowongan -->
+    <!-- lowongan baru -->
     <div class="section">
         <div class="container">
-            <h3>Detail Lowongan</h3>
+            <h3>Lowongan Baru</h3>
             <div class="box">
-                <div class="col-2">
-                    <img src="job_img/<?php echo $p->job_image ?>"width="100%" >
-                </div>
-                <div class="col-2">
-                    <h3><?php echo $p->job_name ?></h3>
-                    <h4 >Rp <?php echo number_format($p->job_salary)  ?></h4>
-                    <p style="color: #fff;">Deskripsi : <br>
-                        <?php echo $p->job_desc ?>
-                    </p>
-                    <p class="btn2"><a href="proses_lamar.php?idl=<?php echo $p->job_id ?>&idu=<?php echo $d->id ?>" onclick="return confirm ('Kirim Lamaran Pekerjaan?')">Ajukan Lamaran</a></p>
-                </div>
+                <?php
+                    if($_GET['search']!= '' || $_GET['kat'] != ''){
+                        $where = "AND job_name LIKE '%".$_GET['search']."%' AND category_id LIKE '%".$_GET['kat']."%' OR job_salary LIKE '%".$_GET['search']."%' AND category_id LIKE '%".$_GET['kat']."%' OR job_req LIKE '%".$_GET['search']."%' AND category_id LIKE '%".$_GET['kat']."%' ";
+                    }
+                    $lowongan = mysqli_query($conn, "SELECT * FROM jobs WHERE job_status = 1 $where ORDER BY job_id DESC ");
+                    if(mysqli_num_rows($lowongan) > 0){
+                        while($p = mysqli_fetch_array($lowongan)){
+                ?>
+                    <a href="detail_lowongan.php?id=<?php echo $p['job_id'] ?>">
+                        <div class="col-4">
+                            <img src="job_img/<?php echo $p['job_image'] ?>" alt="">
+                            <p class="nama"><?php echo substr($p['job_name'], 0, 30) ?></p>
+                            <p class="harga">Rp <?php echo number_format($p['job_salary'])  ?></p>
+                        </div>
+                    </a>
+                <?php }}else{ ?>
+                    <p>Lowongan Kosong</p>
+                <?php } ?>
             </div>
         </div>
     </div>

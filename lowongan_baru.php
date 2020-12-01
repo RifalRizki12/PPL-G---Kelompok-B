@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lowongan Baru</title>
+    <title>AI.Jobs || Lowongan Baru</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
@@ -21,7 +21,7 @@
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="beranda.php">AI.Jobs</a></h1>
+            <h1><a href="beranda_pemilik.php">AI.Jobs || PEMILIK USAHA</a></h1>
             <ul>
                 <li><a href="beranda_pemilik.php">Beranda</a></li>
                 <li><a href="profil.php">Profil</a></li>

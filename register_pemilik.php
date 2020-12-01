@@ -1,16 +1,18 @@
-
+<?php 
+    include 'koneksi.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI.Jobs</title>
+    <title>AI.Jobs || Registrasi Pemilik Usaha</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 </head>
 <body>
-    <div class="bgcolor"></div>
     <!-- header -->
     <header>
         <div class="container">
@@ -25,13 +27,65 @@
     <!-- content -->
     <div class="section">
         <div class="container">
-            <div class="tulis">
-                <table>
-                <tr>
-                <td><img src="img/job.png" width="400px"></td>
-                <td><h4>Welcome to AI.Jobs<br>Bergabunglah Bersama Kami</h4></td>
-                </tr>
-                </table>
+            <h3>Registrasi Pemilik Usaha</h3>
+            <div class="box">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <input type="text" name="nama" class="input-control" placeholder="Nama Lengkap" required>
+                    <input type="text" name="kategori" class="input-control" placeholder="Kategori" required>
+                    <h3>Foto</h3><input type="file" name="gambar" class="input-control" required>
+                    <input type="text" name="email" class="input-control" placeholder="Email" required>
+                    <input type="password" name="password" class="input-control" placeholder="Password" required>
+                    <input type="submit" name="submit" value="Daftar" class="btn">
+                </form>
+                <?php
+                    if(isset($_POST['submit'])) {
+                        //print_r($_FILES['gambar']);
+                        //menampung input form
+                        $nama = $_POST['nama'];
+                        $kategori = $_POST['kategori'];
+                        $email = $_POST['email'];
+                        $password = $_POST['password'];
+
+                        //menampung data file upload
+                        $filename = $_FILES['gambar']['name'];
+                        $tmp_name = $_FILES['gambar']['tmp_name'];
+
+                        $type1 = explode('.', $filename);
+                        $type2 = $type1[1];
+
+                        $newname = 'resume_pemilik'.time().'.'.$type2;
+                        
+                        //menampung format file yg diizinkan
+                        $tipe_diizinkan = array('jpg','JPG', 'jpeg', 'png');
+
+                        //validasi format file
+
+                        if(!in_array($type2, $tipe_diizinkan)) {
+                            echo '<script>alert("Format file harus jpg, jpeg, atau png")</script>';
+
+                        }else {
+                            move_uploaded_file($tmp_name, './owner_img/'.$newname);
+
+                            $insert = mysqli_query($conn, "INSERT INTO owners VALUES (
+                                                            null,
+                                                            '".$nama."',
+                                                            '".$kategori."',
+                                                            '".$email."',
+                                                            '".$password."',
+                                                            '".$newname."',
+                                                            0
+                                                            ) ");
+                            if($insert) {
+                                echo '<script>alert("Anda Berhasil Daftar silahkan tunggu Verifikasi dari Admin")</script>';
+                                echo '<script>window.location="beranda.php"</script>';
+                            } else {
+                                echo 'gagal'.mysqli_error($conn);
+                            }
+                        }
+
+                        //proses upload file
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -42,7 +96,9 @@
             <small>Copyright &copy; 2020 - AI.Jobs</small>
         </div>
     </footer>
-
+    <script>
+        //CKEDITOR.replace( 'deskripsi' );
+    </script>
     <div id="login" class="popup">
 		<div id="klik" class="bgbox">
 			<div class="img">
@@ -51,12 +107,12 @@
 			<div class="box-login">
                 <h2>Login</h2>
                 <form action="" method="POST">
-                    <input type="text" name="owner_email" placeholder="Email" class="input-control" required>
-                    <input type="password" name="owner_password" placeholder="Password" class="input-control" required>
-                    <input type="submit" name="submit" placeholder="Login" class="btn">
+                    <input type="text" name="owner_email" placeholder="Email" class="input-control">
+                    <input type="password" name="owner_password" placeholder="Password" class="input-control">
+                    <input type="submit" name="submit2" placeholder="Login" class="btn">
                 </form>
                 <?php
-                    if(isset($_POST['submit'])) {
+                    if(isset($_POST['submit2'])) {
                         session_start();
                         include 'koneksi.php';
 
@@ -100,6 +156,5 @@
             </div>
 		</div>
     </div>
-    
 </body>
 </html>

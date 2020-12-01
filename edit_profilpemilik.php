@@ -1,11 +1,14 @@
 <?php 
     session_start();
     include 'koneksi.php';
-    if($_SESSION['status_login'] != true) {
+    if($_SESSION['status_login_admin'] != true) {
         echo '<script>window.location="beranda.php"</script>';
     }
 
-    $query = mysqli_query($conn, "SELECT * FROM owners WHERE owner_id = '".$_SESSION['id']."' ");
+    $query = mysqli_query($conn, "SELECT * FROM owners WHERE owner_id = '".$_GET['idpu']."' ");
+    if(mysqli_num_rows($query) == 0){
+        echo '<script>window.location="daftar_pemilik.php"</script>';
+    }
     $d = mysqli_fetch_object($query);
 ?>
 
@@ -22,11 +25,11 @@
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="beranda.php">AI.Jobs || PEMILIK USAHA</a></h1>
+        <h1><a href="beranda_admin.php">AI.Jobs || ADMIN</a></h1>
             <ul>
-                <li><a href="beranda_pemilik.php">Beranda</a></li>
-                <li><a href="profil.php">Profil</a></li>
-                <li><a href="lowongan.php">Lowongan</a></li>
+                <li><a href="beranda_admin.php">Beranda</a></li>
+                <li><a href="verifikasi.php">Verifikasi</a></li>
+                <li><a href="kategori.php">kategori</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
@@ -56,7 +59,7 @@
                                                 ");
                         if($update) {
                             echo '<script>alert("Profil berhasil di ubah")</script>' ;
-                            echo '<script>window.location = "profil.php"</script>' ;
+                            echo '<script>window.location = "edit_profilpemilik.php"</script>' ;
                         }else {
                             echo 'gagal'.mysqli_error($conn);
                         }
@@ -85,7 +88,7 @@
                                                 ");
                             if($update_password) {
                                 echo '<script>alert("Password berhasil di ubah")</script>' ;
-                                echo '<script>window.location = "profil.php"</script>' ;
+                                echo '<script>window.location = "edit_profilpemilik.php"</script>' ;
                             }else {
                                 echo 'gagal'.mysqli_error($conn);
                             }

@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI.Jobs</title>
+    <title>AI.Jobs || Pencari Kerja</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
@@ -19,11 +19,11 @@
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="index.php">AI.Jobs</a></h1>
+            <h1><a href="beranda_user.php">AI.Jobs || PENCARI KERJA</a></h1>
             <ul>
                 <li><a href="beranda_user.php">Beranda</a></li>
                 <li><a href="profil_user.php">Profil</a></li>
-                <li><a href="upload.php">Upload</a></li>
+                <li><a href="lamaran_user.php">Lamaran</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
@@ -32,7 +32,7 @@
     <!-- search -->
     <div class="search">
         <div class="container">
-            <form action="detail_lowongan.php">
+            <form action="cari_lowongan.php">
                 <input type="text" name="search" placeholder="Cari Lowongan">
                 <input type="submit" name="cari" value="Cari Lowongan">
             </form>
@@ -49,7 +49,7 @@
                     if(mysqli_num_rows($kategori) > 0) {
                         while($k = mysqli_fetch_array($kategori)){
                 ?>
-                    <a href="detail_lowongan.php?kat=<?php echo $k['category_id'] ?>">
+                    <a href="cari_lowongan.php?kat=<?php echo $k['category_id'] ?>">
                         <div class="col-5">
                             <img src="img/category.png" width="50px" style="margin-bottom: 5px;">
                             <p><?php echo $k['category_name'] ?></p>
@@ -75,8 +75,8 @@
                     <a href="detail_lowongan.php?id=<?php echo $p['job_id'] ?>">
                         <div class="col-4">
                             <img src="job_img/<?php echo $p['job_image'] ?>" alt="">
-                            <p class="nama"><?php echo $p['job_name'] ?></p>
-                            <p class="harga">Rp <?php echo $p['job_salary'] ?></p>
+                            <p class="nama"><?php echo substr($p['job_name'], 0, 30)  ?></p>
+                            <p class="harga">Rp <?php echo number_format($p['job_salary'])  ?></p>
                         </div>
                     </a>
                 <?php }}else{ ?>

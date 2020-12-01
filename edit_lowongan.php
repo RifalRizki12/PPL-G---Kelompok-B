@@ -2,7 +2,7 @@
     session_start();
     include 'koneksi.php';
     if($_SESSION['status_login'] != true) {
-        echo '<script>window.location="login.php"</script>';
+        echo '<script>window.location="beranda.php"</script>';
     }
 
     $lowongan = mysqli_query($conn, "SELECT * FROM jobs WHERE job_id = '".$_GET['id']."' ");
@@ -27,7 +27,7 @@
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="beranda.php">AI.Jobs</a></h1>
+            <h1><a href="beranda.php">AI.Jobs || PEMILIK USAHA</a></h1>
             <ul>
                 <li><a href="beranda_pemilik.php">Beranda</a></li>
                 <li><a href="profil.php">Profil</a></li>

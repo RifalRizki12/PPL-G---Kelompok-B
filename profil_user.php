@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil</title>
+    <title>AI.Jobs || Profil Pencari Kerja</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
@@ -22,11 +22,11 @@
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="beranda_user.php">AI.Jobs</a></h1>
+            <h1><a href="beranda_user.php">AI.Jobs || PENCARI KERJA</a></h1>
             <ul>
                 <li><a href="beranda_user.php">Beranda</a></li>
                 <li><a href="profil_user.php">Profil</a></li>
-                <li><a href="upload.php">Upload</a></li>
+                <li><a href="lamaran_user.php">Lamaran</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>

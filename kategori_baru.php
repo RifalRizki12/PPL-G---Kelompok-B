@@ -20,9 +20,10 @@
     <!-- header -->
     <header>
         <div class="container">
-            <h1><a href="beranda_admin.php">AI.Jobs</a></h1>
+            <h1><a href="beranda_admin.php">AI.Jobs || ADMIN</a></h1>
             <ul>
                 <li><a href="beranda_admin.php">Beranda</a></li>
+                <li><a href="verifikasi.php">Verifikasi</a></li>
                 <li><a href="kategori.php">Kategori</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
