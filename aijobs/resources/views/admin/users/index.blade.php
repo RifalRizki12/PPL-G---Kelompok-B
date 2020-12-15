@@ -31,7 +31,17 @@
                         <div class="form-group">
                             <select name="peran" class="form-control">
                                 @if (isset($_GET['peran']))
-                                    <option value="{{ $_GET['peran'] }}">{{ $_GET['peran'] }}</option>
+                                    <option value="{{ $_GET['peran'] }}">
+                                        @if($_GET['peran'] == 'pencari')
+                                            <label class="py-2 px-3 badge btn-primary">Pencari Kerja</label>
+                                        @elseif($_GET['peran'] == 'admin')
+                                            <label class="py-2 px-3 badge btn-danger">Admin</label>
+                                        @elseif($_GET['peran'] == 'pemilik')
+                                            <label class="py-2 px-3 badge btn-danger">Pemilik Usaha</label>
+                                        @elseif($_GET['peran'] == '')
+                                            <label class="py-2 px-3 badge btn-danger">--Select Role--</label>
+                                        @endif
+                                    </option>
                                     <option value="">User</option>
                                     <option value="pencari">Pencari</option>
                                     <option value="admin">Admin</option>

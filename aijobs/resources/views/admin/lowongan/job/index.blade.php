@@ -11,7 +11,6 @@
           <a href="{{ url('lowongan') }}">Lowongan</a>
           {{-- <span>/</span>
           <span></span> --}}
-          <a href="{{ url('lowongan-baru') }}" class="btn btn-primary py-2 px-2">Lowongan baru</a>
         </h4>
       </div>
     </div>
@@ -26,7 +25,7 @@
             @endif
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-striped table-bordered">
+                    <table id="datatable1" class="table table-striped table-bordered">
                         <thead>
                             <th>ID</th>
                             <th>Nama</th>
@@ -70,4 +69,12 @@
 
 </div>
 
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('#datatable1').DataTable();
+    } );
+</script>
 @endsection

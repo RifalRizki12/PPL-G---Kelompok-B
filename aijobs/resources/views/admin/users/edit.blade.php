@@ -36,7 +36,7 @@
                             <label class="py-2 px-3 badge btn-danger">Belum Diverifikasi</label>
                         @endif
                     </h5>
-                    <form action="{{ url('role-update/'.$user_roles->id)}}" method="POST">
+                    <form action="{{ url('role-update/'.$user_roles->id)}}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @method('PUT')
 
@@ -47,9 +47,23 @@
                             <input type="text" class="form-control" readonly value="{{ $user_roles->email }}">
                         </div>
                         <div class="form-group">
+                            <label for="">Resume</label> <br>
+                            <input type="file" name="resume" class="form-control">
+                            <img width="500px" src="{{ asset('uploads/resume/'.$user_roles->resume) }}" alt="">
+                        </div>
+                        <div class="form-group">
                             <select name="roles" class="form-control">
-                                <option value="">--Select Role--</option>
-                                <option value="">Default</option>
+                                <option value="{{ $user_roles->role_as }}">
+                                    @if($user_roles->role_as == 'pencari')
+                                        <label class="py-2 px-3 badge btn-primary">Pencari Kerja</label>
+                                    @elseif($user_roles->role_as == 'admin')
+                                        <label class="py-2 px-3 badge btn-danger">Admin</label>
+                                    @elseif($user_roles->role_as == 'pemilik')
+                                        <label class="py-2 px-3 badge btn-danger">Pemilik Usaha</label>
+                                    @elseif($user_roles->role_as == '')
+                                        <label class="py-2 px-3 badge btn-danger">--Select Role--</label>
+                                    @endif
+                                </option>
                                 <option value="pencari">Pencari Kerja</option>
                                 <option value="admin">Admin</option>
                                 <option value="pemilik">Pemilik Usaha</option>
@@ -57,7 +71,13 @@
                         </div>
                         <div class="form-group">
                             <select name="isverified" class="form-control">
-                                <option value="">--Verifikasi--</option>
+                                <option value="{{ $user_roles->isverified }}">
+                                    @if($user_roles->isverified == '0')
+                                        <label class="py-2 px-3 badge btn-primary">Sudah Diverifikasi</label>
+                                    @elseif($user_roles->isverified == '1')
+                                        <label class="py-2 px-3 badge btn-danger">Belum Diverifikasi</label>
+                                    @endif
+                                </option>
                                 <option value="0">Verifikasi User</option>
                                 <option value="1">Jangan Verifikasi User</option>
                             </select>

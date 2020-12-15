@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Auth\UserProvider;
+use Illuminate\Support\Facades\File;
 
 class RegisteredController extends Controller
 {
@@ -28,6 +29,19 @@ class RegisteredController extends Controller
     {
         $user = User::find($id);
         $user->name = $request->input('name');
+        if($request->hasFile('resume'))
+        {
+            $destination = 'uploads/resume/'.$user->resume;
+            if (File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('resume');
+            $extention = $file->getClientOriginalExtension();
+            $filename_resume = time() . '.' . $extention;
+            $file->move('uploads/resume/', $filename_resume);
+            $user->resume = $filename_resume;
+        }
         $user->role_as = $request->input('roles');
         $user->isverified = $request->input('isverified');
         $user->update();

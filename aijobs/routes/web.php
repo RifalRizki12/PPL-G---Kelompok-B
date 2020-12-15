@@ -26,6 +26,8 @@ Route::get('lowongan','Frontend\LowonganController@index');
 //frontend
 Route::get('lowongan/{category_url}','Frontend\LowonganController@categoryview');
 
+
+//User
 Route::group(['middleware' => ['auth','isUser']], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
@@ -42,6 +44,11 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
         return view('admin.dashboard');
     });
 
+    //edit profil admin
+    Route::get('/profil-admin', 'Admin\AdminController@myprofile');
+    Route::post('/profil-admin-update', 'Admin\AdminController@profilupdate');
+
+    //mengelola pemilik dan pencari
     Route::get('daftar-user', 'Admin\RegisteredController@index');
     Route::get('role-edit/{id}', 'Admin\RegisteredController@edit');
     Route::put('role-update/{id}', 'Admin\RegisteredController@updaterole');
@@ -73,6 +80,12 @@ Route::group(['middleware' => ['auth','isPemilik']], function () {
     Route::get('/pemilik-dashboard', function () {
         return view('pemilik.dashboard');
     });
+
+    //edit profil pemilik
+    Route::get('/profil-pemilik', 'Pemilik\PemilikController@myprofile');
+    Route::post('/profil-pemilik-update', 'Pemilik\PemilikController@profilupdate');
+
+    //membuat lowongan dan mengelola
     Route::get('/lowongan-pemilik','Pemilik\jobController@index');
     Route::get('lowongan-pemilik-baru','Pemilik\jobController@create');
     Route::post('/simpan-lowongan-pemilik', 'Pemilik\jobController@store');

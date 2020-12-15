@@ -63,11 +63,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'isverified' => '1',
         ]);
+        if(request()->hasFile('resume'))
+        {
+            $file = request()->file('resume');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extention;
+            request()->file('resume')->storeAs('uploads/resume/', $filename);
+            //$file->move('uploads/resume/', $filename);
+            $user->update(['resume' => $filename]);
+        }
+        return $user;
     }
 }

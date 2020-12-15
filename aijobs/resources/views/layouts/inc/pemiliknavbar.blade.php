@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="{{ url('/pemilik-dashboard') }}" target="_blank">
+      <a class="navbar-brand waves-effect" href="{{ url('pemilik-dashboard') }}" target="_blank">
         <strong class="blue-text">Dashboard</strong>
       </a>
 
@@ -19,7 +19,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="#">Home
+            <a class="nav-link waves-effect" href="{{ url('pemilik-dashboard') }}">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -56,8 +56,7 @@
                         {{ Auth::user()->name.''.Auth::user()->lastname }}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Profil</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="{{ url('profil-pemilik') }}">Profil</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
