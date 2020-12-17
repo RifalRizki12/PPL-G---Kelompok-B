@@ -34,23 +34,23 @@
                                     <option value="{{ $_GET['peran'] }}">
                                         @if($_GET['peran'] == 'pencari')
                                             <label class="py-2 px-3 badge btn-primary">Pencari Kerja</label>
-                                        @elseif($_GET['peran'] == 'admin')
-                                            <label class="py-2 px-3 badge btn-danger">Admin</label>
+                                        {{-- @elseif($_GET['peran'] == 'admin')
+                                            <label class="py-2 px-3 badge btn-danger">Admin</label> --}}
                                         @elseif($_GET['peran'] == 'pemilik')
                                             <label class="py-2 px-3 badge btn-danger">Pemilik Usaha</label>
                                         @elseif($_GET['peran'] == '')
-                                            <label class="py-2 px-3 badge btn-danger">--Select Role--</label>
+                                            <label class="py-2 px-3 badge btn-danger">Belum Memiliki Role</label>
                                         @endif
                                     </option>
-                                    <option value="">User</option>
-                                    <option value="pencari">Pencari</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="pemilik">Pemilik</option>
+                                    <option value="">Belum Memiliki Role</option>
+                                    <option value="pencari">Pencari Kerja</option>
+                                    {{-- <option value="admin">Admin</option> --}}
+                                    <option value="pemilik">Pemilik Usaha</option>
                                 @else
-                                    <option value="">User</option>
-                                    <option value="pencari">Pencari</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="pemilik">Pemilik</option>
+                                    <option value="">Belum Memiliki Role</option>
+                                    <option value="pencari">Pencari Kerja</option>
+                                    {{-- <option value="admin">Admin</option> --}}
+                                    <option value="pemilik">Pemilik Usaha</option>
                                 @endif
                             </select>
                         </div>

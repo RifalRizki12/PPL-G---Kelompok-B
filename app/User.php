@@ -26,6 +26,8 @@ class User extends Authenticatable
         'picture',
         'resume',
         'no_rek',
+        'role_as',
+        'isverified',
     ];
 
     /**

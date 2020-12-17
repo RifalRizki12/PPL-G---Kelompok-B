@@ -6,10 +6,8 @@
 
 @section('content')
 
-<section class="py-5">
-    <br>
-    <br>
-    <div class="container">
+<section class="py-5" style="margin-top: 150px">
+    <div class="container" >
         <div class="row">
             <div class="col-md-12">
                 <div class="card">

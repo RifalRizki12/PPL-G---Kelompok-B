@@ -8,4 +8,9 @@ class Category extends Model
 {
     protected $table = 'categorys';
     protected $fillable = ['url','name', 'descrip', 'status'];
+
+    public function job()
+    {
+        return $this->hasMany(Job::class);
+    }
 }

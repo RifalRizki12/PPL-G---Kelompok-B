@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\models\Users;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -29,7 +30,7 @@ class Job extends Model
 
     public function owner()
     {
-        return $this->BelongsTo(Owner::class, 'owner_id', 'id');
+        return $this->BelongsTo(Users::class, 'owner_id', 'id');
     }
 
 }

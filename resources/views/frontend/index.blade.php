@@ -1,55 +1,60 @@
 @extends('layouts.frontend')
 
-@section('title')
-    Home
-@endsection
 
-@section('content')
-
-    @include('frontend.slider.slider')
-
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                @for($i=1; $i<=4; $i++)
-                <div class="col-md-3 col-6 mt-3">
-
-                    <!--Card-->
-                    <div class="card">
-
-                    <!--Card image-->
-                    <div class="view overlay">
-                        <a>
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" alt="">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
+<section class="hero" style="margin-top: 150px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>All Categories</span>
                     </div>
-                    <!--Card image-->
-
-                    <!--Card content-->
-                    <div class="card-body text-center">
-                        <!--Category & Title-->
-                        <a href="" class="grey-text">
-                            <h5>Shirt</h5>
-                        </a>
-                        <h5>
-                            <strong>
-                                <a href="" class="dark-grey-text">Denim shirt
-                                <span class="badge badge-pill danger-color">NEW</span>
-                                </a>
-                            </strong>
-                        </h5>
-                        <h4 class="font-weight-bold blue-text">
-                            <strong>120$</strong>
-                        </h4>
-                    </div>
-
-                    </div>
-                    <!--Card-->
+                    <ul>
+                        @php
+                        $category = App\Models\Category::where('status','!=','2')->get();
+                        @endphp
+                        <li> @foreach ($category as $category_nav_item)
+                            <a href="{{ url('lowongan/'.$category_nav_item->url) }}">
+                                {{ $category_nav_item->name }}
+                            </a>
+                            @endforeach
+                        </li>
+                    </ul>
                 </div>
-                @endfor
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="#">
+                            <div class="hero__search__categories">
+                                Cari Lowongan
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input type="text" placeholder="What do yo u need?">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+65 11.188.888</h5>
+                            <span>support 24/7 time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__item set-bg" data-setbg="/images/bag.jpg"
+                    style="background-image: url(&quot;/images/bag.jpg&quot;);">
+                    <div class="hero__text">
+                        <span>Pekerjaan</span>
+                        <h2>Bidang <br>Argoindustri</h2>
+                        <p style="color: aliceblue">Lowongan Pekerjaan Terbaru</p>
+                        <a href="#" class="primary-btn">DAFTAR SEKARANG</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-
-@endsection
+    </div>
+</section>
