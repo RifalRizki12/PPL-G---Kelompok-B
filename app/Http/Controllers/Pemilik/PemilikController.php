@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\File;
 
 class PemilikController extends Controller
 {
+    public function index()
+    {
+        return view('pemilik.dashboard');
+    }
+
     public function myprofile()
     {
         return view('pemilik.profil');
@@ -24,11 +29,9 @@ class PemilikController extends Controller
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
 
-        if($request->hasFile('foto'))
-        {
-            $destination = 'uploads/profile/'.$user->picture;
-            if (File::exists($destination))
-            {
+        if ($request->hasFile('foto')) {
+            $destination = 'uploads/profile/' . $user->picture;
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
             $file = $request->file('foto');
@@ -38,11 +41,9 @@ class PemilikController extends Controller
             $user->picture = $f_filename;
         }
 
-        if($request->hasFile('resume'))
-        {
-            $destination = 'uploads/resume/'.$user->resume;
-            if (File::exists($destination))
-            {
+        if ($request->hasFile('resume')) {
+            $destination = 'uploads/resume/' . $user->resume;
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
             $file = $request->file('resume');
@@ -54,6 +55,6 @@ class PemilikController extends Controller
         $user->no_rek = $request->input('no_rek');
         $user->update();
 
-        return redirect()->back()->with('status', 'Profil berhasil di Update' );
+        return redirect()->back()->with('status', 'Profil berhasil di Update');
     }
 }

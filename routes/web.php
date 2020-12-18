@@ -46,9 +46,10 @@ Route::group(['middleware' => ['auth', 'isUser']], function () {
 //ADMIN
 Route::group(['middleware' => ['auth', 'isAdmin']], function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
+    // Route::get('/dashboard', function () {
+    //     return view('admin.dashboard');
+    // });
+    Route::get('/dashboard', 'Admin\AdminController@index');
 
     //edit profil admin
     Route::get('/profil-admin', 'Admin\AdminController@myprofile');
@@ -71,8 +72,8 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
 
     //lowongan
     Route::get('/lowongan', 'Admin\jobController@index');
-    Route::get('lowongan-baru', 'Admin\jobController@create');
-    Route::post('/simpan-lowongan', 'Admin\jobController@store');
+    // Route::get('lowongan-baru', 'Admin\jobController@create');
+    // Route::post('/simpan-lowongan', 'Admin\jobController@store');
     Route::get('edit-lowongan/{id}', 'Admin\jobController@edit');
     Route::put('update-lowongan/{id}', 'Admin\jobController@update');
     Route::get('hapus-lowongan/{id}', 'Admin\jobController@delete');
@@ -82,9 +83,11 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
 //PEMILIK
 Route::group(['middleware' => ['auth', 'isPemilik']], function () {
 
-    Route::get('/pemilik-dashboard', function () {
-        return view('pemilik.dashboard');
-    });
+    // Route::get('/pemilik-dashboard', function () {
+    //     return view('pemilik.dashboard');
+    // });
+
+    Route::get('/pemilik-dashboard', 'Pemilik\PemilikController@index',);
 
     //edit profil pemilik
     Route::get('/profil-pemilik', 'Pemilik\PemilikController@myprofile');
@@ -97,4 +100,18 @@ Route::group(['middleware' => ['auth', 'isPemilik']], function () {
     Route::get('edit-lowongan-pemilik/{id}', 'Pemilik\jobController@edit');
     Route::put('update-lowongan-pemilik/{id}', 'Pemilik\jobController@update');
     Route::get('hapus-lowongan-pemilik/{id}', 'Pemilik\jobController@delete');
+});
+
+//PEMILIK
+Route::group(['middleware' => ['auth', 'isPencari']], function () {
+
+    // Route::get('/pencari-dashboard', function () {
+    //     return view('pencari.dashboard');
+    // });
+
+    Route::get('/pencari-dashboard', 'Pencari\PencariController@index');
+
+    //edit profil pemilik
+    Route::get('/profil-pencari', 'Pencari\PencariController@myprofile');
+    Route::post('/profil-pencari-update', 'Pencari\PencariController@profilupdate');
 });

@@ -20,8 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->longText('address');
+            $table->string('phone');
+            $table->string('picture');
+            $table->string('resume');
             $table->string('role_as')->nullable();
             $table->tinyInteger('isverified')->default('1');
+            $table->integer('job_id');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Pencari;
 
 use App\User;
 use Illuminate\Http\Request;
@@ -8,15 +8,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
-class AdminController extends Controller
+class PencariController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        return view('pencari.dashboard');
     }
+
     public function myprofile()
     {
-        return view('admin.profil');
+        return view('pencari.profil');
     }
 
     public function profilupdate(Request $request)

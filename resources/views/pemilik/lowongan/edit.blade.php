@@ -47,28 +47,28 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Nama lowongan</label>
-                                    <input type="text" name="job_name" class="form-control" value="{{ $job->job_name }}" placeholder="Nama">
+                                    <input type="text" name="job_name" class="form-control" value="{{ $job->job_name }}" placeholder="Nama" required>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Custom URL (Slug)</label>
-                                    <input type="text" name="url" class="form-control" value="{{ $job->url }}" placeholder='Isi URL'>
+                                    <input type="text" name="url" class="form-control" value="{{ $job->url }}" placeholder='Isi URL' required>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Deskripsi</label>
-                                    <textarea rows="4" name="job_descrip" class="form-control" placeholder="Deskripsi">{{ $job->job_descrip }}</textarea>
+                                    <textarea rows="4" name="job_descrip" class="form-control" placeholder="Deskripsi" required>{{ $job->job_descrip }}</textarea>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Kapasitas Pekerja</label>
-                                    <input type="integer" name="job_capacity" class="form-control" value="{{ $job->job_capacity }}" placeholder="Kapasitas">
+                                    <input type="integer" name="job_capacity" class="form-control" value="{{ $job->job_capacity }}" placeholder="Kapasitas" required>
                                 </div>
                             </div>
 
@@ -76,21 +76,21 @@
                                 <div class="form-group">
                                     <label for="">Gambar</label>
                                     <input type="file" name="job_image" class="form-control">
-                                    <img src="{{ asset('uploads/jobimage/'.$job->job_image) }}" width="100px">
+                                    <img src="{{ asset('uploads/jobimage/'.$job->job_image) }}" width="100px" >
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Requirement</label>
-                                    <textarea rows="4" name="job_req" class="form-control" placeholder="Requirement">{{ $job->job_req }}</textarea>
+                                    <textarea rows="4" name="job_req" class="form-control" placeholder="Requirement" required>{{ $job->job_req }}</textarea>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Gaji</label>
-                                    <input type="integer" name="job_salary" class="form-control" value="{{ $job->job_salary }}" placeholder="Gaji">
+                                    <input type="integer" name="job_salary" class="form-control" value="{{ $job->job_salary }}" placeholder="Gaji" required>
                                 </div>
                             </div>
 

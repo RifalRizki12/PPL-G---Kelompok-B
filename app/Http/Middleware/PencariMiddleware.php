@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class PemilikMiddleware
+class PencariMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class PemilikMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role_as == 'pemilik') {
+        if (Auth::user()->role_as == 'pencari') {
             if (Auth::check() && Auth::user()->isverified) {
                 $verified = Auth::user()->isverified == "1";
                 Auth::logout();
@@ -30,7 +30,7 @@ class PemilikMiddleware
             }
             return $next($request);
         } else {
-            return redirect('/pemilik-dashboard')->with('status', 'Anda tidak memiliki izin untuk mengakses halaman ini');
+            return redirect('/pencari-dashboard')->with('status', 'Anda tidak memiliki izin untuk mengakses halaman ini');
         }
     }
 }

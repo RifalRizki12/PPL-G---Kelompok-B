@@ -29,11 +29,9 @@ class RegisteredController extends Controller
     {
         $user = User::find($id);
         $user->name = $request->input('name');
-        if($request->hasFile('resume'))
-        {
-            $destination = 'uploads/resume/'.$user->resume;
-            if (File::exists($destination))
-            {
+        if ($request->hasFile('resume')) {
+            $destination = 'uploads/resume/' . $user->resume;
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
             $file = $request->file('resume');

@@ -31,7 +31,7 @@ class AuthController extends Controller
 
             //login pencari
             if (Auth::user()->role_as == 'pencari') {
-                return view('frontend.index');
+                return view('pencari.dashboard');
             }
 
             //login pencari

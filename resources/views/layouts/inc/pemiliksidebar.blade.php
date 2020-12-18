@@ -2,7 +2,7 @@
 <div class="sidebar-fixed position-fixed">
 
     <a class="logo-wrapper waves-effect">
-        <H1 style="color: rgb(5, 154, 199); font-weight:700;">AI.JOBS</H1>
+        <H2 style="color: rgb(5, 154, 199); font-weight:700;">AI.JOBS</H2>
     </a>
 
     <div class="list-group list-group-flush">

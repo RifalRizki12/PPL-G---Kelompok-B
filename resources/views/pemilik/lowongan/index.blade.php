@@ -55,7 +55,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ url('edit-lowongan-pemilik/'.$item->id) }}" class="badge btn btn-primary">Edit</a>
-                                    <a href="{{ url('hapus-lowongan-pemilik/'.$item->id) }}" class="badge btn btn-danger">Delete</a>
+                                    <a href="{{ url('hapus-lowongan-pemilik/'.$item->id) }}" class="badge btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
