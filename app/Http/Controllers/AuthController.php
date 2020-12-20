@@ -20,23 +20,25 @@ class AuthController extends Controller
     public function postlogin(Request $request)
     {
         if (Auth::attempt($request->only('email', 'password'))) {
-            if (Auth::user()->role_as == 'admin') {
-                return view('admin.dashboard');
-            }
+            if (Auth::user()->isverified == '0') {
+                if (Auth::user()->role_as == 'admin') {
+                    return view('admin.dashboard');
+                }
 
-            //login pemilik
-            if (Auth::user()->role_as == 'pemilik') {
-                return view('pemilik.dashboard');
-            }
+                //login pemilik
+                if (Auth::user()->role_as == 'pemilik') {
+                    return view('pemilik.dashboard');
+                }
 
-            //login pencari
-            if (Auth::user()->role_as == 'pencari') {
-                return view('pencari.dashboard');
-            }
+                //login pencari
+                if (Auth::user()->role_as == 'pencari') {
+                    return view('pencari.dashboard');
+                }
 
-            //login pencari
-            if (Auth::user()->role_as == NULL) {
-                return view('frontend.index');
+                //login pencari
+                if (Auth::user()->role_as == NULL) {
+                    return view('frontend.index');
+                }
             }
         }
         return redirect('/login')->with('sukses', 'Email Atau Password salah');

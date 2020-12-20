@@ -1,54 +1,65 @@
 @extends('layouts.pemilik')
 
 
-@section('content')
-
-<div class="container-fluid mt-5">
-
-    <!-- Heading -->
-    <div class="card mb-4 wow fadeIn">
-
-        <!--Card content-->
-        <div class="card-body d-sm-flex justify-content-between">
-
-            <h4 class="mb-2 mb-sm-0 pt-1">
-                <a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home Page</a>
-                <span>/</span>
-                <span>Dashboard</span>
-            </h4>
-
-            <form class="d-flex justify-content-center">
-                <!-- Default input -->
-                <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
-                <button class="btn btn-primary btn-sm my-0 p" type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
-
-            </form>
-
+<section class="hero" style="margin-top: 150px">
+    <div class="container">
+        @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
         </div>
-
-    </div>
-    <!-- Heading -->
-
-    <div class="row">
-
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5>Total Orders : 9</h5>
+        @endif
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>All Categories</span>
+                    </div>
+                    <ul>
+                        @php
+                        $category = App\Models\Category::where('status','!=','2')->get();
+                        @endphp
+                        <li> @foreach ($category as $category_nav_item)
+                            <a href="{{ url('posts/'.$category_nav_item->url) }}">
+                                {{ $category_nav_item->name }}
+                            </a>
+                            @endforeach
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="#">
+                            <div class="hero__search__categories">
+                                Cari Lowongan
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input type="text" placeholder="What do yo u need?">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+65 11.188.888</h5>
+                            <span>support 24/7 time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__item set-bg" data-setbg="/images/bag.jpg"
+                    style="background-image: url(&quot;/images/bag.jpg&quot;);">
+                    <div class="hero__text">
+                        <span>Pekerjaan</span>
+                        <h2>Bidang <br>Argoindustri</h2>
+                        <p style="color: aliceblue">Lowongan Pekerjaan Terbaru</p>
+                        <a href="#" class="primary-btn">DAFTAR SEKARANG</a>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5>Total Orders : 5</h5>
-                </div>
-            </div>
-        </div>
-
     </div>
-
-    @endsection
+</section>

@@ -6,6 +6,7 @@ use App\User;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\worker;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -23,6 +24,10 @@ class SiteController extends Controller
     {
         return view('sites.about');
     }
+    public function contact()
+    {
+        return view('sites.contact');
+    }
 
     public function register()
     {
@@ -39,7 +44,7 @@ class SiteController extends Controller
 
     public function postregister(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
         ]);
@@ -48,10 +53,10 @@ class SiteController extends Controller
         $user = new \App\User;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->role_as = $request->role_as;
         $user->password = bcrypt($request->password);
         $user->isverified = $request->isverified;
-        if(request()->hasFile('resume'))
-        {
+        if (request()->hasFile('resume')) {
             $file = request()->file('resume');
             $extention = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extention;
@@ -60,20 +65,26 @@ class SiteController extends Controller
             $user->update(['resume' => $filename]);
             $user->resume = $filename;
         }
+
         $user->remember_token = str_random(60);
         $user->save();
 
-        //insert ke tabel siswa
-        // $request->request->add(['user_id' => $user->id ]);
-        // $siswa = \App\Siswa::create($request->all());
+        if ($user->role_as = 'pencari') {
+            $request->request->add(['user_id' => $user->id]);
+            $user = worker::create([
+                'user_id' => $user['id'],
+            ]);
+        }
 
-        return redirect('/login')->with('sukses','Pendaftaran Berhasil');
+        //insert ke tabel siswa
+
+        return redirect('/login')->with('sukses', 'Pendaftaran Berhasil');
     }
 
 
     public function singlepost($url)
     {
-        $job = Job::where('url','=',$url)->first();
-        return view('sites.singlepost',compact(['post']));
+        $job = Job::where('url', '=', $url)->first();
+        return view('sites.singlepost', compact(['post']));
     }
 }

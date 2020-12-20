@@ -29,6 +29,10 @@ class PencariMiddleware
                     ->withErrors(['email' => 'Akun anda masih belum diverifiksai oleh admin. Silahkan hubungi admin untuk informasi lebih lanjut.']);
             }
             return $next($request);
+        } else if (Auth::user()->role_as == 'admin') {
+            return redirect('/dashboard')->with('status', 'Anda tidak memiliki izin untuk mengakses halaman ini');
+        } else if (Auth::user()->role_as == 'pemilik') {
+            return redirect('/pemilik-dashboard')->with('status', 'Anda tidak memiliki izin untuk mengakses halaman ini');
         } else {
             return redirect('/pencari-dashboard')->with('status', 'Anda tidak memiliki izin untuk mengakses halaman ini');
         }

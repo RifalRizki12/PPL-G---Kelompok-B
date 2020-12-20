@@ -20,10 +20,15 @@ class Users extends Model
         'no_rek',
         'role_as',
         'isverified',
+        'job_id',
     ];
 
     public function job()
     {
         return $this->hasMany(Job::class);
+    }
+    public function worker()
+    {
+        return $this->has(worker::class);
     }
 }

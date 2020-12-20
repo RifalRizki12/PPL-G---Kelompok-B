@@ -3,6 +3,11 @@
 
 <section class="hero" style="margin-top: 150px">
     <div class="container">
+        @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
         <div class="row">
             <div class="col-lg-3">
                 <div class="hero__categories">

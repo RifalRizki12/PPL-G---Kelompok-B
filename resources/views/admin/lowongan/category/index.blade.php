@@ -8,7 +8,7 @@
     <div class="card mb-4 wow fadeIn">
       <div class="card-body d-sm-flex justify-content-between">
         <h6 class="mb-2 mb-sm-0 pt-1">
-          <a href="" target="_blank">Lowongan</a>
+          <span>Lowongan</span>
           <span>/</span>
           <span>Kategori</span>
           <a href="{{ url('kategori-terhapus') }}" class="btn btn-primary py-2 px-2 ml-2">Kategori yg dihapus</a>

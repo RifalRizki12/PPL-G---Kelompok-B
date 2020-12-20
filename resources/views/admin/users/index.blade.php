@@ -8,16 +8,16 @@
     <!-- Heading -->
     <div class="card mb-4 wow fadeIn">
 
-      <!--Card content-->
-      <div class="card-body d-sm-flex justify-content-between">
+        <!--Card content-->
+        <div class="card-body d-sm-flex justify-content-between">
 
-        <h4 class="mb-2 mb-sm-0 pt-1">
-          <a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home Page</a>
-          <span>/</span>
-          <span>Daftar User</span>
-        </h4>
+            <h4 class="mb-2 mb-sm-0 pt-1">
+                <a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home Page</a>
+                <span>/</span>
+                <span>Daftar User</span>
+            </h4>
 
-      </div>
+        </div>
 
     </div>
     <!-- Heading -->
@@ -31,26 +31,37 @@
                         <div class="form-group">
                             <select name="peran" class="form-control">
                                 @if (isset($_GET['peran']))
-                                    <option value="{{ $_GET['peran'] }}">
-                                        @if($_GET['peran'] == 'pencari')
-                                            <label class="py-2 px-3 badge btn-primary">Pencari Kerja</label>
-                                        {{-- @elseif($_GET['peran'] == 'admin')
-                                            <label class="py-2 px-3 badge btn-danger">Admin</label> --}}
-                                        @elseif($_GET['peran'] == 'pemilik')
-                                            <label class="py-2 px-3 badge btn-danger">Pemilik Usaha</label>
-                                        @elseif($_GET['peran'] == '')
-                                            <label class="py-2 px-3 badge btn-danger">Belum Memiliki Role</label>
-                                        @endif
-                                    </option>
-                                    <option value="">Belum Memiliki Role</option>
-                                    <option value="pencari">Pencari Kerja</option>
-                                    {{-- <option value="admin">Admin</option> --}}
-                                    <option value="pemilik">Pemilik Usaha</option>
+                                <option value="{{ $_GET['peran'] }}">
+                                    @if($_GET['peran'] == 'pencari')
+                                    <label class="py-2 px-3 badge btn-primary">Pencari Kerja</label>
+                                    @elseif($_GET['peran'] == 'pemilik')
+                                    <label class="py-2 px-3 badge btn-danger">Pemilik Usaha</label>
+                                    @elseif($_GET['peran'] == '')
+                                    <label class="py-2 px-3 badge btn-danger"> -- Peran -- </label>
+                                    @endif
+                                </option>
+                                <option value="pencari">Pencari Kerja</option>
+                                <option value="pemilik">Pemilik Usaha</option>
                                 @else
-                                    <option value="">Belum Memiliki Role</option>
-                                    <option value="pencari">Pencari Kerja</option>
-                                    {{-- <option value="admin">Admin</option> --}}
-                                    <option value="pemilik">Pemilik Usaha</option>
+                                <option value=""> -- Peran -- </option>
+                                <option value="pencari">Pencari Kerja</option>
+                                <option value="pemilik">Pemilik Usaha</option>
+                                @endif
+                            </select>
+                            <select name="isverified" class="form-control">
+                                @if (isset($_GET['isverified']))
+                                <option value="{{ $_GET['isverified'] }}">
+                                    @if($_GET['isverified'] == '1')
+                                    <label class="py-2 px-3 badge btn-primary">Belum Diverifikasi</label>
+                                    @elseif($_GET['isverified'] == '0')
+                                    <label class="py-2 px-3 badge btn-danger">Sudah diVerifikasi</label>
+                                    @endif
+                                </option>
+                                <option value='0'>Sudah diverifikasi</option>
+                                <option value='1'>Belum Diverifikasi</option>
+                                @else
+                                <option value='0'>Sudah diverifikasi</option>
+                                <option value='1'>Belum Diverifikasi</option>
                                 @endif
                             </select>
                         </div>
@@ -72,7 +83,7 @@
                                 <th class="text-center">Nama</th>
                                 <th class="text-center">Email</th>
                                 <th class="text-center">Peran</th>
-                                <th class="text-center">Aktifitas</th>
+                                {{-- <th class="text-center">Aktifitas</th> --}}
                                 <th class="text-center">Verifikasi</th>
                                 <th class="text-center">Edit</th>
                             </tr>
@@ -84,22 +95,23 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->role_as }}</td>
-                                <td class="text-center">
+                                {{-- <td class="text-center">
                                     @if($item->isUserOnline())
-                                        <label class="py-2 px-3 badge btn-success">Online</label>
+                                    <label class="py-2 px-3 badge btn-success">Online</label>
                                     @else
-                                        <label class="py-2 px-3 badge btn-warning">Offline</label>
+                                    <label class="py-2 px-3 badge btn-warning">Offline</label>
                                     @endif
-                                </td>
+                                </td> --}}
                                 <td class="text-center">
                                     @if($item->isverified == '0')
-                                        <label class="py-2 px-3 badge btn-primary">Sudah Diverifikasi</label>
+                                    <label class="py-2 px-3 badge btn-primary">Sudah Diverifikasi</label>
                                     @elseif($item->isverified == '1')
-                                        <label class="py-2 px-3 badge btn-danger">Belum Diverifikasi</label>
+                                    <label class="py-2 px-3 badge btn-danger">Belum Diverifikasi</label>
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ url('role-edit/'.$item->id)}}" class="badge badge-pill btn-primary px-3 py-2">edit</a>
+                                    <a href="{{ url('role-edit/'.$item->id)}}"
+                                        class="badge badge-pill btn-primary px-3 py-2">edit</a>
                                     <a href="" class="badge badge-pill btn-danger px-3 py-2">delete</a>
                                 </td>
                             </tr>
@@ -108,19 +120,20 @@
                     </table>
                     {{-- <div class="float-right">
                         {{ $users->links()}}
-                    </div> --}}
-                </div>
+                </div> --}}
             </div>
         </div>
-
     </div>
+
+</div>
 
 @endsection
 
 @section('scripts')
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#datatable1').DataTable();
-    } );
+    });
+
 </script>
 @endsection

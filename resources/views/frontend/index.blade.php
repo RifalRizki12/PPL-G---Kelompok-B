@@ -4,7 +4,7 @@
 <section class="hero" style="margin-top: 150px">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            {{-- <div class="col-lg-3">
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
@@ -22,10 +22,10 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-lg-9">
                 <div class="hero__search">
-                    <div class="hero__search__form">
+                    {{-- <div class="hero__search__form">
                         <form action="#">
                             <div class="hero__search__categories">
                                 Cari Lowongan
@@ -34,7 +34,7 @@
                             <input type="text" placeholder="What do yo u need?">
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
-                    </div>
+                    </div> --}}
                     <div class="hero__search__phone">
                         <div class="hero__search__phone__icon">
                             <i class="fa fa-phone"></i>
@@ -51,7 +51,7 @@
                         <span>Pekerjaan</span>
                         <h2>Bidang <br>Argoindustri</h2>
                         <p style="color: aliceblue">Lowongan Pekerjaan Terbaru</p>
-                        <a href="#" class="primary-btn">DAFTAR SEKARANG</a>
+                        <a href="/register" class="primary-btn">DAFTAR SEKARANG</a>
                     </div>
                 </div>
             </div>

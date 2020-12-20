@@ -15,7 +15,7 @@ class RegisteredController extends Controller
     {
         //$users = User::paginate(3);
         //$users = User::all();
-        $users = User::where('role_as', Input::get('peran'))->get();
+        $users = User::where('role_as', Input::get('peran'))->where('isverified', Input::get('isverified'))->get();
         return view('admin.users.index')->with('users', $users);
     }
 

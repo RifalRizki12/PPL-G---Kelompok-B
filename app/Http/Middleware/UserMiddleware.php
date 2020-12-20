@@ -18,23 +18,20 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->isverified)
-        {
+        if (Auth::check() && Auth::user()->isverified) {
             $verified = Auth::user()->isverified == "1";
             Auth::logout();
 
-            if ($verified == 1)
-            {
+            if ($verified == 1) {
                 $message = 'Akun anda masih belum diverifiksai oleh admin. Silahkan hubungi admin untuk informasi lebih lanjut.';
             }
             return redirect()->route('login')
-                ->with('status',$message)
+                ->with('status', $message)
                 ->withErrors(['email' => 'Akun anda masih belum diverifiksai oleh admin. Silahkan hubungi admin untuk informasi lebih lanjut.']);
         }
 
-        if(Auth::check())
-        {
-            $expiresAt = Carbon::now()->addMinutes(1);
+        if (Auth::check()) {
+            $expiresAt = Carbon::now()->addMinutes(5);
             Cache::put('user-is-online' . Auth::user()->id, true, $expiresAt);
         }
 

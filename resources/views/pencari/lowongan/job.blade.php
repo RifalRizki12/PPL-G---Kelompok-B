@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.pencari')
 
 
 <section class="breadcrumb-section set-bg" style="margin-top: 150px" data-setbg="/assets/img/breadcrumb.jpg">
@@ -8,7 +8,7 @@
                 <div class="breadcrumb__text">
                     <h2>{{ $category->name }}</h2>
                     <div class="breadcrumb__option">
-                        <a href="/">Home</a>
+                        <a href="/pencari-dashboard">Home</a>
                         <span>Lowongan</span>
                     </div>
                 </div>

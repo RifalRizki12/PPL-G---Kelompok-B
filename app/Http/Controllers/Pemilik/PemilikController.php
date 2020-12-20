@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pemilik;
 
 use App\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,8 @@ class PemilikController extends Controller
 {
     public function index()
     {
-        return view('pemilik.dashboard');
+        $category = Category::where('status', '0')->get();
+        return view('pemilik.dashboard')->with('category', $category);
     }
 
     public function myprofile()

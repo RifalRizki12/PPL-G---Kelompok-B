@@ -1,74 +1,80 @@
-<!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container-fluid">
-
-      <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="{{ url('pemilik-dashboard') }}" target="_blank">
-        <strong class="blue-text">Dashboard</strong>
-      </a>
-
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="{{ url('pemilik-dashboard') }}">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About
-              MDB</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-              target="_blank">Free
-              download</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
-              tutorials</a>
-          </li>
-        </ul>
-
-        <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-                <div class="dropdown">
-                    <button class="nav-link border border-light rounded waves-effect dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ Auth::user()->name.''.Auth::user()->lastname }}
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ url('profil-pemilik') }}">Profil</a>
-                        <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
-
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+<header class="header fixed-top" style="margin-bottom: 200px">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__left">
+                        <ul>
+                            <li><i class="fa fa-envelope"></i> animeyuusa@gmail.com</li>
+                        </ul>
                     </div>
                 </div>
-          </li>
-        </ul>
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__right">
+                        @guest
+                        <div class="header__top__right__auth">
+                            <a href="{{ url('/login') }}"><i class="fa fa-user"></i> Login</a>
+                        </div>
+                        <div class="header__top__right__auth">
+                            <a href="{{ url('/register') }}"><i class="fa fa-user"></i> Daftar</a>
+                        </div>
+                        @if (Route::has('register'))
+                            <div class="header__top__right__auth">
+                            <a href="{{ url('/register') }}"><i class="fa fa-user"></i> Daftar</a>
+                        </div>
+                        @endif
+                        @else
+                        <div class="header__top__right__auth">
+                            <a href="{{ url('/profil-pemilik') }}"><i class="fa fa-user"></i> Profil</a>
+                        </div>
+                        <div class="header__top__right__auth">
+                            <a href="{{ url('/logout') }}"><i class="fa fa-user"></i> Logout</a>
+                        </div>
+                        @endguest
 
-      </div>
-
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </nav>
-  <!-- Navbar -->
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <h2 class="text-center"><a href="/pemilik-dashboard" style="color:rgb(0, 206, 62)">AI.JOBS</a></h1>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="/pemilik-dashboard">Home</a></li>
+                            {{-- <li><a href="shop-grid.html">Shop</a></li> --}}
+                            <li><a href="/lowongan-pemilik">Lowongan</a>
+                                {{-- <ul class="header__menu__dropdown">
+                                    <li><a href="shop-details.html">Shop Details</a></li>
+                                    <li><a href="shoping-cart.html">Shoping Cart</a></li>
+                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li><a href="blog-details.html">Blog Details</a></li>
+                                </ul> --}}
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </div>
+</header>

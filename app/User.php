@@ -28,6 +28,7 @@ class User extends Authenticatable
         'no_rek',
         'role_as',
         'isverified',
+        'job_id',
     ];
 
     /**

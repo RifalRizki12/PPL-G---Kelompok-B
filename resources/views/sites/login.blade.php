@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section style="padding-top: 100px; margin-top: 150px;">
+<section style="padding-top: 200px; padding-bottom: 125px;">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

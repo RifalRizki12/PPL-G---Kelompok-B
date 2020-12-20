@@ -5,13 +5,15 @@
 <div class="container-fluid mt-5">
 
     <div class="card mb-4 wow fadeIn">
-      <div class="card-body d-sm-flex justify-content-between">
+        <div class="card-body d-sm-flex justify-content-between">
 
-        <h4 class="mb-2 mb-sm-0 pt-1">
-          <span>Daftar User - Edit Role</span>
-        </h4>
+            <h4 class="mb-2 mb-sm-0 pt-1">
+                <a href="/daftar-user">Daftar User</a>
+                <span> / </span>
+                <span>Edit Role</span>
+            </h4>
 
-      </div>
+        </div>
 
     </div>
     <!-- Heading -->
@@ -22,18 +24,18 @@
             <div class="card">
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
                     <h4>{{ $user_roles->role_as }}</h4>
                     <h5>
                         Status :
                         @if($user_roles->isverified == '0')
-                            <label class="py-2 px-3 badge btn-primary">Sudah Diverifikasi</label>
+                        <label class="py-2 px-3 badge btn-primary">Sudah Diverifikasi</label>
                         @elseif($user_roles->isverified == '1')
-                            <label class="py-2 px-3 badge btn-danger">Belum Diverifikasi</label>
+                        <label class="py-2 px-3 badge btn-danger">Belum Diverifikasi</label>
                         @endif
                     </h5>
                     <form action="{{ url('role-update/'.$user_roles->id)}}" method="POST" enctype="multipart/form-data">
@@ -55,13 +57,13 @@
                             <select name="roles" class="form-control">
                                 <option value="{{ $user_roles->role_as }}">
                                     @if($user_roles->role_as == 'pencari')
-                                        <label class="py-2 px-3 badge btn-primary">Pencari Kerja</label>
+                                    <label class="py-2 px-3 badge btn-primary">Pencari Kerja</label>
                                     @elseif($user_roles->role_as == 'admin')
-                                        <label class="py-2 px-3 badge btn-danger">Admin</label>
+                                    <label class="py-2 px-3 badge btn-danger">Admin</label>
                                     @elseif($user_roles->role_as == 'pemilik')
-                                        <label class="py-2 px-3 badge btn-danger">Pemilik Usaha</label>
+                                    <label class="py-2 px-3 badge btn-danger">Pemilik Usaha</label>
                                     @elseif($user_roles->role_as == '')
-                                        <label class="py-2 px-3 badge btn-danger">--Select Role--</label>
+                                    <label class="py-2 px-3 badge btn-danger">--Select Role--</label>
                                     @endif
                                 </option>
                                 <option value="pencari">Pencari Kerja</option>
@@ -73,9 +75,9 @@
                             <select name="isverified" class="form-control">
                                 <option value="{{ $user_roles->isverified }}">
                                     @if($user_roles->isverified == '0')
-                                        <label class="py-2 px-3 badge btn-primary">Sudah Diverifikasi</label>
+                                    <label class="py-2 px-3 badge btn-primary">Sudah Diverifikasi</label>
                                     @elseif($user_roles->isverified == '1')
-                                        <label class="py-2 px-3 badge btn-danger">Belum Diverifikasi</label>
+                                    <label class="py-2 px-3 badge btn-danger">Belum Diverifikasi</label>
                                     @endif
                                 </option>
                                 <option value="0">Verifikasi User</option>
@@ -92,4 +94,4 @@
 
     </div>
 
-@endsection
+    @endsection

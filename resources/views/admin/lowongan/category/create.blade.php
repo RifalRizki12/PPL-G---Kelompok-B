@@ -34,14 +34,26 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Nama</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Nama">
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nama">
+
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Custom URL (Slug)</label>
-                                    <input type="text" name="url" class="form-control" placeholder='Isi URL'>
+                                    <input type="text" name="url" class="form-control @error('url') is-invalid @enderror" placeholder='Isi URL'>
+
+                                    @error('url')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 </div>
                             </div>
 

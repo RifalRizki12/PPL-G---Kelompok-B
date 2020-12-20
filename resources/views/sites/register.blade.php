@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('content')
-<section style="padding-top: 100px; margin-top: 125px;">
+<section style="padding-top: 200px; padding-bottom: 125px;">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -37,6 +37,17 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="role_as" class="col-md-4 col-form-label text-md-right">Peran</label>
+
+                            <div class="col-md-6">
+                                <select name="role_as" class="form-control" required>
+                                    <option value="pemilik">Pemilik Usaha</option>
+                                    <option value="pencari">Pencari Kerja</option>
+                                </select>
                             </div>
                         </div>
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5" style="padding-top: 50px; padding-bottom: 125px;">
     <div class="row">
         <div class="col-md-12 py-3">
             <div class="card">

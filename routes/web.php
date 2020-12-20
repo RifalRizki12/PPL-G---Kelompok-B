@@ -16,6 +16,7 @@ use illuminate\support\facades\Route;
 
 //AWAL MASUK
 Route::get('/', 'SiteController@home');
+Route::get('/contact', 'SiteController@contact');
 Route::get('/register', 'SiteController@register');
 Route::post('/postregister', 'SiteController@postregister');
 
@@ -30,8 +31,8 @@ Route::get('/logout', 'AuthController@logout');
 Route::get('lowongan', 'Frontend\LowonganController@index');
 
 //frontend
-Route::get('lowongan/{category_url}', 'Frontend\LowonganController@categoryview');
-Route::get('lowongan/{category_url}/{job_url}', 'Frontend\LowonganController@jobview');
+// Route::get('lowongan/{category_url}', 'Frontend\LowonganController@categoryview');
+// Route::get('lowongan/{category_url}/{job_url}', 'Frontend\LowonganController@jobview');
 
 
 //User
@@ -100,9 +101,13 @@ Route::group(['middleware' => ['auth', 'isPemilik']], function () {
     Route::get('edit-lowongan-pemilik/{id}', 'Pemilik\jobController@edit');
     Route::put('update-lowongan-pemilik/{id}', 'Pemilik\jobController@update');
     Route::get('hapus-lowongan-pemilik/{id}', 'Pemilik\jobController@delete');
+
+    // Lihat Pencari Kerja
+    Route::get('posts/{category_url}', 'Pemilik\ViewpostController@categoryview');
+    Route::get('posts/{category_url}/{worker_url}', 'Pemilik\ViewpostController@postview');
 });
 
-//PEMILIK
+//Pencari
 Route::group(['middleware' => ['auth', 'isPencari']], function () {
 
     // Route::get('/pencari-dashboard', function () {
@@ -111,7 +116,17 @@ Route::group(['middleware' => ['auth', 'isPencari']], function () {
 
     Route::get('/pencari-dashboard', 'Pencari\PencariController@index');
 
-    //edit profil pemilik
+    //edit profil pencari
     Route::get('/profil-pencari', 'Pencari\PencariController@myprofile');
     Route::post('/profil-pencari-update', 'Pencari\PencariController@profilupdate');
+
+    // edit post pencari
+    Route::get('/post-pencari', 'Pencari\PostController@mypost');
+    Route::get('/edit-post-pencari/{id}', 'Pencari\PostController@edit');
+    Route::put('/update-post-pencari/{id}', 'Pencari\PostController@postupdate');
+
+    // Lihat Lowongan
+    Route::get('lowongan/{category_url}', 'Pencari\LowonganController@categoryview');
+    Route::get('lowongan/{category_url}/{job_url}', 'Pencari\LowonganController@jobview');
+    Route::put('/send-request/{id}', 'Pencari\SendController@sendrequest');
 });

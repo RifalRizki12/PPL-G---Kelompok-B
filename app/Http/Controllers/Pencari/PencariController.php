@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Pencari;
 
 use App\User;
+use App\Models\worker;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
